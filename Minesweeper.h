@@ -6,12 +6,13 @@
 using namespace sf;
 
 class Minesweeper {
-private:
-    RenderWindow *window;
+    private:
+        RenderWindow *window;
 
-public:
-    Minesweeper(int size, std::string title);
-    void run();
+    public:
+        Minesweeper(int size, std::string title);
+        ~Minesweeper();
+        void run();
 };
 
 #endif
