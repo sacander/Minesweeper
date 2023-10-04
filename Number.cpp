@@ -2,8 +2,8 @@
 #include "Minesweeper.h"
 
 // Constructor calls tile constructor and assigns the value
-Number::Number(std::string textureFilepath, std::string flagTextureFilepath, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, Minesweeper &game, int value)
-    : Tile(textureFilepath, flagTextureFilepath, hiddenTextureFilepath, xBoardPos, yBoardPos, game), value(value) {}
+Number::Number(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, int value)
+    : Tile(textureFilepath, pos, game, hiddenTextureFilepath, xBoardPos, yBoardPos), value(value) {}
 
 // No memory cleaning neccessary
 Number::~Number() {}

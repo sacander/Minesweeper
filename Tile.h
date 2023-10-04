@@ -27,7 +27,7 @@ class Tile : public Entity {
         int yBoardPos;
 
     public:
-        Tile(std::string textureFilepath, std::string flagTextureFilepath, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, Minesweeper &game);
+        Tile(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos);
         ~Tile();
         // Left click shows tile, and can also be called from board after a swap
         virtual void showTile();

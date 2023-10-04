@@ -9,7 +9,7 @@ class Mine : public Tile {
         bool firstTileClicked();
 
     public:
-        Mine(std::string textureFilepath, std::string flagTextureFilepath, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, Minesweeper &game);
+        Mine(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos);
         ~Mine();
         // Override showTile()
         void showTile();

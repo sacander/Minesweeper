@@ -9,7 +9,7 @@ Minesweeper::~Minesweeper() {
 }
 
 void Minesweeper::run() {
-    Tile test("./textures/tile.png", "./textures/flag.png", "./textures/mine.png", 0, 0, *this);
+    Tile test("./textures/tile.png", Vector2f(50, 50), *this, "./textures/mine.png", 0, 0);
 
     while (window->isOpen()) {
         sf::Event event;

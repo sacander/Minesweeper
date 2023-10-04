@@ -1,13 +1,13 @@
 #include "Entity.h"
-// #include "Minesweeper.h"
 #include <iostream>
 
-// Constructor sets texture and prints error if not found
-Entity::Entity(std::string textureFilepath, Minesweeper &game) : game(game) {
+// Constructor sets position and texture and prints error if not found
+Entity::Entity(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game) : game(game) {
     if (!texture.loadFromFile(textureFilepath)) {
         std::cout << "Texture not found" << std::endl;
     }
     sprite.setTexture(texture);
+    sprite.setPosition(pos);
 }
 
 // No memory cleaning neccessary
