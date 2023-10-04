@@ -1,9 +1,9 @@
-all: Minesweeper.o Entity.o Tile.o Mine.o Number.o
-	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out
+all: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o
+	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out
 	./game.out
 
-compile:
-	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out
+compile: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o
+	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out
 
 run:
 	./game.out
@@ -22,6 +22,12 @@ Mine.o: Mine.cpp
 
 Number.o: Number.cpp
 	g++ -c Number.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o Number.o
+
+Board.o: Board.cpp
+	g++ -c Board.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o Board.o
+
+Timer.o: Timer.cpp
+	g++ -c Timer.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o Timer.o
 
 clean:
 	rm -f *.out

@@ -2,26 +2,35 @@
 #define TILE_H
 
 #include "Entity.h"
-#include <SFML/Graphics.hpp>
-
-using namespace sf;
+// class Minesweeper;
+// #include <SFML/Graphics.hpp>
 
 class Tile : public Entity {
     private:
-        bool shown = false;
-        bool flag = false;
-        Texture flagTexture;
-        Texture hiddenTexture;
-        int xBoardPos;
-        int yBoardPos;
-        void showTile();
-        void toggleFlag();
+        // Implement onClick functions so class is no longer abstract
         void onLeftClick();
         void onRightClick();
+        // Right click toggles flag
+        void toggleFlag();
+        // Starts timer when the first tile is clicked
+        virtual bool firstTileClicked();
+
+    protected:
+        // State of tile
+        bool shown = false;
+        bool flag = false;
+        // Alternative file textures
+        sf::Texture flagTexture;
+        sf::Texture hiddenTexture;
+        // Tile position in board
+        int xBoardPos;
+        int yBoardPos;
 
     public:
-        Tile(std::string textureFilepath, std::string flagTextureFilepath, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos);
+        Tile(std::string textureFilepath, std::string flagTextureFilepath, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, Minesweeper &game);
         ~Tile();
+        // Left click shows tile, and can also be called from board after a swap
+        virtual void showTile();
 };
 
 #endif

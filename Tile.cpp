@@ -1,8 +1,10 @@
 #include "Tile.h"
+#include "Minesweeper.h"
 #include <iostream>
 
-Tile::Tile(std::string textureFilepath, std::string flagTextureFilepath, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos)
-    : Entity(textureFilepath), xBoardPos(xBoardPos), yBoardPos(yBoardPos) {
+// Constructor sets textures and prints errors if not found
+Tile::Tile(std::string textureFilepath, std::string flagTextureFilepath, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, Minesweeper &game)
+    : Entity(textureFilepath, game), xBoardPos(xBoardPos), yBoardPos(yBoardPos) {
     if (!flagTexture.loadFromFile(flagTextureFilepath)) {
         std::cout << "Flag texture not found" << std::endl;
     }
@@ -12,30 +14,49 @@ Tile::Tile(std::string textureFilepath, std::string flagTextureFilepath, std::st
     }
 }
 
+// No memory cleaning neccessary
 Tile::~Tile() {}
 
-void Tile::showTile() {
-    sprite.setTexture(hiddenTexture);
-    shown = true;
+// Tiles are revealed when left-clicked
+void Tile::onLeftClick() {
+    showTile();
 }
 
+// Flags are toggled when right-clicked
+void Tile::onRightClick() {
+    toggleFlag();
+}
+
+// Behaviour for toggling the flag
 void Tile::toggleFlag() {
+    // Flag cannot be toggled if tile is revealed
     if (shown) {
         return;
     }
+    // Hide flag if already flagged
     if (flag) {
         sprite.setTexture(texture);
         flag = false;
     } else {
+        // Show flag if not already flagged
         sprite.setTexture(flagTexture);
         flag = true;
     }
 }
 
-void Tile::onLeftClick() {
-    showTile();
+// Checks if it is the first tile and starts the timer
+bool Tile::firstTileClicked() {
+    if (game.getBoard()->getRevealedTiles() == 0) {
+        game.getTimer()->startTimer();
+    }
+    return false; // No swapped mine
 }
 
-void Tile::onRightClick() {
-    toggleFlag();
+// Calls firstTileClicked() then shows hidden sprite and updates shown status
+void Tile::showTile() {
+    // Only shows tile if a mine was not swapped
+    if (!firstTileClicked()) {
+        sprite.setTexture(hiddenTexture);
+        shown = true;
+    }
 }

@@ -1,8 +1,7 @@
 #include "Minesweeper.h"
-#include "Tile.h"
 
 Minesweeper::Minesweeper(int size, std::string title) {
-    window = new RenderWindow(VideoMode(size, size), title);
+    window = new sf::RenderWindow(sf::VideoMode(size, size), title);
 }
 
 Minesweeper::~Minesweeper() {
@@ -10,18 +9,18 @@ Minesweeper::~Minesweeper() {
 }
 
 void Minesweeper::run() {
-    Tile test("test.png", "testflag.png", "testhidden.png", 0, 0);
+    Tile test("./textures/tile.png", "./textures/flag.png", "./textures/mine.png", 0, 0, *this);
 
     while (window->isOpen()) {
-        Event event;
+        sf::Event event;
 
         while (window->pollEvent(event)) {
 
-            if (event.type == Event::Closed) {
+            if (event.type == sf::Event::Closed) {
                 window->close();
             }
 
-            if (event.type == Event::MouseButtonPressed) {
+            if (event.type == sf::Event::MouseButtonPressed) {
                 test.onClickEvent(window, event);
             }
         }
@@ -30,6 +29,18 @@ void Minesweeper::run() {
         test.draw(window);
         window->display();
     }
+}
+
+void Minesweeper::gameWin() {}
+
+void Minesweeper::gameLose() {}
+
+Board *Minesweeper::getBoard() {
+    return board;
+}
+
+Timer *Minesweeper::getTimer() {
+    return timer;
 }
 
 int main() {
