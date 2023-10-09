@@ -1,21 +1,17 @@
 #include "Timer.h"
 
 void Timer::startTimer() {
-    // start counting up
-    timer = time(0); 
-    display.setString(std::to_string(timer));
-
-    int lastsecond;
-    // while game is active run loop where every second the display 
-    //is updated to display the new time
+    started = true;
 }
 
 void Timer::resetTimer() {
+    timer = time(0); 
     display.setString("000");
 }
 
-void Timer::stopTimer() {}
-  //pause value 
+void Timer::stopTimer() {
+    started = false;
+}
 
 void Timer::onLeftClick() {}
 
@@ -25,3 +21,10 @@ Timer::Timer(Minesweeper &game)
 : Entity("./textures/mine.png", Vector2f(400,40), game) {}
 
 Timer::~Timer() {}
+
+void Timer::draw(sf::RenderWindow *window) {
+  Entity::draw(window);
+  if (started == true) {
+    display.setString(std::to_string(time(0) - timer));
+  }
+}

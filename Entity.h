@@ -24,7 +24,7 @@ class Entity {
         // Called for every entity whenever a click occurs
         void onClickEvent(sf::RenderWindow *window, sf::Event &event);
         // Draws entity to the window
-        void draw(sf::RenderWindow *window);
+        virtual void draw(sf::RenderWindow *window);
 };
 
 #endif
