@@ -10,7 +10,7 @@ class Minesweeper {
         sf::RenderWindow *window;
         Board *board;
         Timer *timer;
-
+        bool gameActive;
     public:
         Minesweeper(int size, std::string title);
         ~Minesweeper();
