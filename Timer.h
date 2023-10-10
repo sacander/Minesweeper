@@ -2,7 +2,7 @@
 #define TIMER_H
 
 #include "Entity.h"
-#include <ctime>>
+#include <ctime>
 
 using namespace sf;
 
