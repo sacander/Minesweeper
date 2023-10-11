@@ -22,7 +22,7 @@ class Board {
         bool incrementRevealedTiles();
         void swapTiles(int x, int y);
         void revealMines();
-        std::vector<Tile **> getAdjacentTiles(int x, int y);
+        std::vector<Tile *> getAdjacentTiles(int x, int y);
         int getRevealedTiles();
 };
 
