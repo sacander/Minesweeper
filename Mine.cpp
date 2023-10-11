@@ -2,8 +2,8 @@
 #include "Minesweeper.h"
 
 // Constructor just calls tile constructor
-Mine::Mine(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos)
-    : Tile(textureFilepath, pos, game, hiddenTextureFilepath, xBoardPos, yBoardPos) {}
+Mine::Mine(sf::Vector2f pos, Minesweeper &game, int xBoardPos, int yBoardPos)
+    : Tile(pos, game, "textures/mine.png", xBoardPos, yBoardPos) {}
 
 // No memory cleaning neccessary
 Mine::~Mine() {}

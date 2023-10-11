@@ -3,8 +3,8 @@
 #include <vector>
 
 // Constructor calls tile constructor and assigns the value
-Number::Number(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, int value)
-    : Tile(textureFilepath, pos, game, hiddenTextureFilepath, xBoardPos, yBoardPos), value(value) {}
+Number::Number(sf::Vector2f pos, Minesweeper &game, int xBoardPos, int yBoardPos, int value)
+    : Tile(pos, game, "textures/" + std::to_string(value) + ".png", xBoardPos, yBoardPos), value(value) {}
 
 // No memory cleaning neccessary
 Number::~Number() {}

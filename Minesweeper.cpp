@@ -9,7 +9,8 @@ Minesweeper::~Minesweeper() {
 }
 
 void Minesweeper::run() {
-    Tile test("./textures/tile.png", Vector2f(50, 50), *this, "./textures/mine.png", 0, 0);
+    Number test(Vector2f(50, 50), *this, 0, 0, 5);
+    Mine test1(Vector2f(100, 50), *this, 0, 0);
 
     while (window->isOpen()) {
         sf::Event event;
@@ -22,11 +23,13 @@ void Minesweeper::run() {
 
             if (event.type == sf::Event::MouseButtonPressed) {
                 test.onClickEvent(window, event);
+                test1.onClickEvent(window, event);
             }
         }
 
         window->clear();
         test.draw(window);
+        test1.draw(window);
         window->display();
     }
 }

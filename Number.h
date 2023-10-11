@@ -9,7 +9,7 @@ class Number : public Tile {
         int value;
 
     public:
-        Number(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, int value);
+        Number(sf::Vector2f pos, Minesweeper &game, int xBoardPos, int yBoardPos, int value);
         ~Number();
         // Override showTile() to extend behaviour
         void showTile();
