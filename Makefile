@@ -3,7 +3,7 @@ all:
 	make run
 
 # sudo spctl --master-disable and sudo spctl --master-enable may be necessary
-mac: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o
+mac: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o
 	make compile_mac
 	make run
 
@@ -36,6 +36,10 @@ Board.o: Board.cpp
 
 Timer.o: Timer.cpp
 	g++ -c Timer.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o Timer.o
+
+NewGameButton.o: NewGameButton.cpp
+	g++ -c NewGameButton.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o NewGameButton.o
+
 
 clean:
 	rm -f *.out

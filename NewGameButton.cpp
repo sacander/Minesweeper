@@ -1,11 +1,17 @@
 #include "NewGameButton.h"
+#include "Minesweeper.h"
 #include <iostream>
+
+NewGameButton::NewGameButton(Vector2f pos, Minesweeper &game) 
+: Entity("./textures/newgame.png", pos, game) {
+    text.setString("NEW GAME");
+}
 
 void NewGameButton::onLeftClick() {
     newGame();
 }
 
-void NewGameButton::onLeftClick() {
+void NewGameButton::onRightClick() {
     newGame();
 }
 
@@ -40,6 +46,9 @@ void NewGameButton::newGame() {
     std::cin >> numberMines;
     };
 
-    //once new board created, this can be called:
-    //newBoard(length, width, numberMines);
+    //newBoard(length, width, numberMines); idk how to call
+}
+
+NewGameButton::~NewGameButton() {
+    //deconstructor
 }

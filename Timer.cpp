@@ -18,7 +18,7 @@ void Timer::onLeftClick() {}
 void Timer::onRightClick() {}
 
 Timer::Timer(Minesweeper &game)
-: Entity("./textures/mine.png", Vector2f(400,40), game) {}
+: Entity("./textures/timerbase.png", Vector2f(400,40), game) {}
 
 Timer::~Timer() {}
 

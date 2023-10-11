@@ -6,7 +6,7 @@
 
 using namespace sf;
 
-class Timer: Entity {
+class Timer: public Entity {
     private:
     std::time_t timer;
     sf::Text display; 
