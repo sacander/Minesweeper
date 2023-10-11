@@ -3,15 +3,15 @@ all:
 	make run
 
 # sudo spctl --master-disable and sudo spctl --master-enable may be necessary
-mac: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o
+mac:
 	make compile_mac
 	make run
 
-compile: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o
-	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out
+compile: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o
+	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out
 
-compile_mac: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o
-	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out -Wl,-rpath,/usr/local/lib
+compile_mac: Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o
+	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out -Wl,-rpath,/usr/local/lib
 
 run:
 	./game.out
@@ -36,6 +36,9 @@ Board.o: Board.cpp
 
 Timer.o: Timer.cpp
 	g++ -c Timer.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o Timer.o
+
+NewGameButton.o: NewGameButton.cpp
+	g++ -c NewGameButton.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o NewGameButton.o
 
 clean:
 	rm -f *.out
