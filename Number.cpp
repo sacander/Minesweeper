@@ -1,5 +1,6 @@
 #include "Number.h"
 #include "Minesweeper.h"
+#include <vector>
 
 // Constructor calls tile constructor and assigns the value
 Number::Number(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos, int value)
@@ -14,8 +15,8 @@ void Number::showTile() {
     Tile::showTile();
     // Shows neighbouring tiles if it has a value of 0.
     if (value == 0) {
-        Tile **adjacentTiles = game.getBoard()->getAdjacentTiles();
-        for (int i = 0; i < 8; i++) {
+        std::vector<Tile **> adjacentTiles = game.getBoard()->getAdjacentTiles();
+        for (int i = 0; i < adjacentTiles.size(); i++) {
             adjacentTiles[i]->showTile();
         }
     }
