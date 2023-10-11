@@ -7,6 +7,10 @@ using namespace sf;
 
 class Board {
     private:
+        Tile * tiles;
+        int xSize;
+        int ySize;
+        int totalMines;
         int revealedTiles = 0;
 
     public:
