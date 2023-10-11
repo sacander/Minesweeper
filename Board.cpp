@@ -6,4 +6,4 @@ void Board::swapTiles(int x, int y) {}
 
 Tile **Board::getAdjacentTiles() {}
 
-int Board::getRevealedTiles() {}
+int Board::getRevealedTiles() {return 1;}

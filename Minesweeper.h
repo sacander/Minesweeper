@@ -3,6 +3,8 @@
 
 #include "Board.h"
 #include "Timer.h"
+#include "Mine.h"
+#include "Number.h"
 #include <SFML/Graphics.hpp>
 
 class Minesweeper {

@@ -3,9 +3,9 @@
 #include <iostream>
 
 // Constructor sets textures and prints errors if not found
-Tile::Tile(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos)
-    : Entity(textureFilepath, pos, game), xBoardPos(xBoardPos), yBoardPos(yBoardPos) {
-    if (!flagTexture.loadFromFile("./textures/flag.png")) {
+Tile::Tile(sf::Vector2f pos, Minesweeper &game, std::string hiddenTextureFilepath, int xBoardPos, int yBoardPos)
+    : Entity("textures/tile.png", pos, game), xBoardPos(xBoardPos), yBoardPos(yBoardPos) {
+    if (!flagTexture.loadFromFile("textures/flag.png")) {
         std::cout << "Flag texture not found" << std::endl;
     }
 
