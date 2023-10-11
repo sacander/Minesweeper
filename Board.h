@@ -15,6 +15,7 @@ class Board {
         int ySize;
         int firstSafeX;
         int firstSafeY;
+        bool swappedTiles = false;
         int totalMines;
         int revealedTiles = 0;
     public:
