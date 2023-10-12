@@ -46,17 +46,25 @@ Board::Board(int width, int height, int mines, Minesweeper* game){
         board[y - 1][x] += 1;
     }
     
+for (int i = 1; i < height+1; i++){
+        for (int j = 1; j < width+1; j++)
+        {
+            std::cout << board[i][j] << " ";
+        }
+        std::cout << std::endl;
+}
+
     //Create tile array (remove buffer edges)
-    tiles = new Tile**[width];
+    tiles = new Tile**[height];
     for (int i = 1; i < height + 1; i++){
-        tiles[i-1] = new Tile*[height];
+        tiles[i-1] = new Tile*[width];
         for (int j = 1; j < width + 1; j++)
         {
-            if (board[i][j] >= 9){
-                tiles[i-1][j-1] = new Mine(sf::Vector2f(50 + 16*i, 50 + 16*j), *game, j, i);
+            if (board[j][i] >= 9){
+                tiles[i-1][j-1] = new Mine(sf::Vector2f(50 + 16*i, 50 + 16*j), *game, j-1, i-1);
             } else {
-                int value = board[i][j];
-                tiles[i-1][j-1] = new Number(Vector2f(50 + 16*i, 50 + 16*j), *game, j, i, value);
+                int value = board[j][i];
+                tiles[i-1][j-1] = new Number(Vector2f(50 + 16*i, 50 + 16*j), *game, j-1, i-1, value);
             }
             //std::cout << board[i][j] << " ";
         }
@@ -94,13 +102,15 @@ bool Board::incrementRevealedTiles() {
 
 //Reveals all mines when game is lost
 void Board::revealMines(Tile* tile){
+    std::cout << "Reveal Mines:" << std::endl;
 
-    //Reveal mines
     for (int i = 0; i < xSize; i++){
         for (int j = 0; j < ySize; j++){
             //Check if tile is a mine or not (based on a known mine location)
-            if (typeid(*tile) != typeid(*tiles[i][j])){
-                tiles[i][j]->showTile();
+            //std::cout << "CHeck" << std::endl;
+            if (typeid(*tile) == typeid(*tiles[j][i])){
+                //std::cout << "Reveal" << std::endl;
+                tiles[j][i]->showTile();
         }
     }
     }
@@ -117,7 +127,7 @@ void Board::swapTiles(int x, int y) {
 std::vector<Tile *> Board::getAdjacentTiles(int x, int y) {
 
     std::vector<Tile*> adjTiles;
-
+    std::cout << "Adj Tiles" << std::endl;
     //TODO : combine if statements
 
     //top left tile

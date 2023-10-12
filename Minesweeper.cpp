@@ -1,8 +1,10 @@
 #include "Minesweeper.h"
+#include <iostream>
 
 Minesweeper::Minesweeper(int size, std::string title) {
     window = new sf::RenderWindow(sf::VideoMode(size, size), title);
     timer = new Timer(Vector2f(300, 100), (*this));
+    gameActive = true;
 }
 
 Minesweeper::~Minesweeper() {
@@ -11,7 +13,8 @@ Minesweeper::~Minesweeper() {
 }
 
 void Minesweeper::run() {
-   // Number test(Vector2f(50, 50), *this, 0, 0, 5);
+    //Number test(Vector2f(50, 50), *this, 0, 0, 5);
+    //test.showTile();
    // Mine test1(Vector2f(66, 50), *this, 0, 0);
     NewGameButton newIcon(Vector2f(300, 50), *this);
     SaveButton saveIcon(Vector2f(200, 50), *this);
@@ -29,7 +32,7 @@ void Minesweeper::run() {
             if (event.type == sf::Event::MouseButtonPressed) {
                 //test.onClickEvent(window, event);
                 //test1.onClickEvent(window, event);
-                board->onClickEvent(window, event);
+                if (gameActive) board->onClickEvent(window, event);
                 newIcon.onClickEvent(window, event);
                 loadIcon.onClickEvent(window, event);
                 saveIcon.onClickEvent(window, event);
@@ -51,12 +54,15 @@ void Minesweeper::run() {
 void Minesweeper::gameWin() {}
 
 //stop timer, show all mines
-void Minesweeper::gameLose() {
+void Minesweeper::gameLose(Tile* mine) {
 
-    timer->stopTimer();
-    //board->revealMines();
-    //Make it so you cant reveal tiles??
-
+    if(gameActive){
+        //Make it so you cant reveal tiles
+        gameActive = false;
+        std::cout << "end game" << std::endl;
+        timer->stopTimer();
+        board->revealMines(mine);
+    }
 }
 
 Board* Minesweeper::newBoard(int height, int width, int mines) {

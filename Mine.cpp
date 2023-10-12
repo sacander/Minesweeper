@@ -24,6 +24,6 @@ void Mine::showTile() {
     if (!firstTileClicked()) {
         sprite.setTexture(hiddenTexture);
         shown = true;
-        game.gameLose();
+        game.gameLose(this);
     }
 }
