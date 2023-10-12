@@ -6,8 +6,6 @@
 using namespace sf;
 
 class NewGameButton: public Entity {
-    private:
-    sf::Text text; 
     public:
     NewGameButton(Vector2f pos, Minesweeper &game);
     ~NewGameButton();

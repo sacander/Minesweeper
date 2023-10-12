@@ -8,9 +8,9 @@ using namespace sf;
 
 class Timer: public Entity {
     private:
-    std::time_t timer;
-    sf::Text display; 
-    bool started = false;
+    std::time_t initialTime; //initial time at which timer and game begins 
+    sf::Text display; //text to be displayed on the timer 
+    bool started = false; //reflects whether the timer and game has started 
     public:
         void startTimer();
         void stopTimer();
