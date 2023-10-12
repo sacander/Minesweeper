@@ -24,7 +24,7 @@ class Minesweeper {
         void gameLose();
         Board *getBoard();
         Timer *getTimer();
-        void newBoard(int height, int width, int mines);
+        Board *newBoard(int height, int width, int mines);
 };
 
 #endif
