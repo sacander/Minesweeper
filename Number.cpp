@@ -12,7 +12,9 @@ Number::~Number() {}
 // Extends behaviour of showTile()
 void Number::showTile() {
     // Keeps general behaviour
-    Tile::showTile();
+    if (!flag){
+        Tile::showTile();
+    }
     // Shows neighbouring tiles if it has a value of 0.
     if (value == 0) {
         //std::vector<Tile *> adjacentTiles = game.getBoard()->getAdjacentTiles(xBoardPos, yBoardPos);

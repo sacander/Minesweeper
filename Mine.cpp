@@ -21,7 +21,7 @@ bool Mine::firstTileClicked() {
 // Overrides behaviour of showTile()
 void Mine::showTile() {
     // Only shows tile and ends game if a mine was not swapped
-    if (!firstTileClicked()) {
+    if (!firstTileClicked() && !flag) {
         sprite.setTexture(hiddenTexture);
         shown = true;
         game.gameLose(this);
