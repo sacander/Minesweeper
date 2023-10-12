@@ -6,6 +6,8 @@
 #include "Mine.h"
 #include "Number.h"
 #include "NewGameButton.h"
+#include "SaveButton.h"
+#include "LoadButton.h"
 #include <SFML/Graphics.hpp>
 
 class Minesweeper {

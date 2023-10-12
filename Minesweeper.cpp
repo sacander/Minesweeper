@@ -11,8 +11,10 @@ Minesweeper::~Minesweeper() {
 void Minesweeper::run() {
     Number test(Vector2f(50, 50), *this, 0, 0, 5);
     Mine test1(Vector2f(100, 50), *this, 0, 0);
-    Timer timerIcon(*this);
+    Timer timerIcon(Vector2f(300, 100), (*this));
     NewGameButton newIcon(Vector2f(300, 50), *this);
+    SaveButton saveIcon(Vector2f(200, 50), *this);
+    LoadButton loadIcon(Vector2f(200, 100), *this);
 
     while (window->isOpen()) {
         sf::Event event;
@@ -35,6 +37,8 @@ void Minesweeper::run() {
         test1.draw(window);
         timerIcon.draw(window);
         newIcon.draw(window);
+        saveIcon.draw(window);
+        loadIcon.draw(window);
         window->display();
     }
 }

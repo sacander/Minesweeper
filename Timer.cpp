@@ -23,8 +23,8 @@ void Timer::onLeftClick() {}
 void Timer::onRightClick() {}
 
 //sets position and the texture for the timer 
-Timer::Timer(Minesweeper &game)
-: Entity("./textures/timerbase.png", Vector2f(400,40), game) {}
+Timer::Timer(Vector2f pos, Minesweeper &game)
+: Entity("./textures/timerbase.png", pos, game) {}
 
 Timer::~Timer() {}
 

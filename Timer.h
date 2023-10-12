@@ -18,7 +18,7 @@ class Timer: public Entity {
         void onLeftClick();
         void onRightClick();
         void draw(sf::RenderWindow *window);
-        Timer(Minesweeper &game);
+        Timer(Vector2f pos, Minesweeper &game);
         ~Timer();
 };
 

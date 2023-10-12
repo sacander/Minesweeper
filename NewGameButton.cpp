@@ -34,7 +34,7 @@ void NewGameButton::newGame() {
         //accounts for an input that is not an integer 
         if (std::cin.fail()) {
             std::cin.clear();
-            //to clear input
+            //to clear input !!NOTE REPEATS FOR A DECIMAL PLACE, NEED TO FIX!! 
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         //reprompts user
@@ -78,6 +78,9 @@ void NewGameButton::newGame() {
     };
 
     //newBoard(length, width, numberMines); idk how to call
+
+    //for testing 
+    std::cout << length << " " << width << " " << numberMines << std::endl;
 }
 
 NewGameButton::~NewGameButton() {
