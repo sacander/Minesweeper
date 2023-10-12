@@ -19,11 +19,15 @@ class Board {
         int totalMines;
         int revealedTiles = 0;
     public:
+        Board(int width, int height, int mines, Minesweeper* game);
+        void draw(RenderWindow *window);
+        void onClickEvent(RenderWindow *window, Event event);
         bool incrementRevealedTiles();
         void swapTiles(int x, int y);
-        void revealMines();
+        void revealMines(Tile* tile);
         std::vector<Tile *> getAdjacentTiles(int x, int y);
         int getRevealedTiles();
+        ~Board();
 };
 
 #endif
