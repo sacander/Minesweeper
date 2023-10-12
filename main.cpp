@@ -2,7 +2,7 @@
 
 int main() {
     Minesweeper minesweeper(500, "Minesweeper");
-    minesweeper.newBoard(5,5,3);
+    minesweeper.newBoard(8,8,8);
     minesweeper.run();
 
     return 0;

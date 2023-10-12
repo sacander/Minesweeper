@@ -13,6 +13,8 @@ class Board {
         Tile ** *tiles;
         int xSize;
         int ySize;
+        int boardX = 50;
+        int boardY = 50;
         int firstSafeX;
         int firstSafeY;
         bool swappedTiles = false;

@@ -17,7 +17,7 @@ void Number::showTile() {
     }
     // Shows neighbouring tiles if it has a value of 0.
     if (value == 0) {
-        //std::vector<Tile *> adjacentTiles = game.getBoard()->getAdjacentTiles(xBoardPos, yBoardPos);
+        std::vector<Tile *> adjacentTiles = game.getBoard()->getAdjacentTiles(xBoardPos, yBoardPos);
         //int length = adjacentTiles.size();
         //for (int i = 0; i < length; i++) {
            // adjacentTiles.at(i)->showTile();

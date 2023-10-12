@@ -46,6 +46,10 @@ Board::Board(int width, int height, int mines, Minesweeper* game){
         board[y - 1][x] += 1;
     }
     
+    //Assign a safe tile coordinate
+    firstSafeY = mineCoords.at(mines)[0] + 1;
+    firstSafeX = mineCoords.at(mines)[1] + 1;
+
 for (int i = 1; i < height+1; i++){
         for (int j = 1; j < width+1; j++)
         {
@@ -61,10 +65,10 @@ for (int i = 1; i < height+1; i++){
         for (int j = 1; j < width + 1; j++)
         {
             if (board[j][i] >= 9){
-                tiles[i-1][j-1] = new Mine(sf::Vector2f(50 + 16*i, 50 + 16*j), *game, j-1, i-1);
+                tiles[i-1][j-1] = new Mine(sf::Vector2f(boardX + 16*i, boardY + 16*j), *game, j-1, i-1);
             } else {
                 int value = board[j][i];
-                tiles[i-1][j-1] = new Number(Vector2f(50 + 16*i, 50 + 16*j), *game, j-1, i-1, value);
+                tiles[i-1][j-1] = new Number(Vector2f(boardX + 16*i, boardY + 16*j), *game, j-1, i-1, value);
             }
             //std::cout << board[i][j] << " ";
         }
