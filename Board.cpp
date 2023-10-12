@@ -58,17 +58,21 @@ for (int i = 1; i < height+1; i++){
         std::cout << std::endl;
 }
 
-    //Create tile array (remove buffer edges)
-    tiles = new Tile**[height];
-    for (int i = 1; i < height + 1; i++){
-        tiles[i-1] = new Tile*[width];
-        for (int j = 1; j < width + 1; j++)
-        {
-            if (board[j][i] >= 9){
-                tiles[i-1][j-1] = new Mine(sf::Vector2f(boardX + 16*i, boardY + 16*j), *game, j-1, i-1);
+    //Create tile array
+    tiles = new Tile**[height + 2];
+    for (int i = 0; i < height + 2; i++){
+        tiles[i] = new Tile*[width + 2];
+        for (int j = 0; j < width + 2; j++){   
+            if (i != 0 && i != height + 1 && j != 0 && j != width + 1){
+                if (board[j][i] >= 9){
+                    tiles[i][j] = new Mine(sf::Vector2f(boardX + 16*i, boardY + 16*j), *game, j, i);
+                } else {
+                    int value = board[j][i];
+                    tiles[i][j] = new Number(Vector2f(boardX + 16*i, boardY + 16*j), *game, j, i, value);
+                }
             } else {
-                int value = board[j][i];
-                tiles[i-1][j-1] = new Number(Vector2f(boardX + 16*i, boardY + 16*j), *game, j-1, i-1, value);
+                std::cout << "nullptr" << std::endl;
+                tiles[i][j] = nullptr;
             }
             //std::cout << board[i][j] << " ";
         }
@@ -80,7 +84,7 @@ for (int i = 1; i < height+1; i++){
 void Board::draw(RenderWindow *window){
     for (int i = 0; i < ySize; i++){
         for (int j = 0; j < xSize; j++){
-            tiles[i][j]->draw(window);
+            tiles[i+1][j+1]->draw(window);
         }  
     }
 }
@@ -88,7 +92,7 @@ void Board::draw(RenderWindow *window){
 void Board::onClickEvent(RenderWindow *window, Event event){
     for (int i = 0; i < ySize; i++){
         for (int j = 0; j < xSize; j++){
-            tiles[i][j]->onClickEvent(window, event);
+            tiles[i+1][j+1]->onClickEvent(window, event);
         }  
     }
 }
@@ -112,9 +116,9 @@ void Board::revealMines(Tile* tile){
         for (int j = 0; j < ySize; j++){
             //Check if tile is a mine or not (based on a known mine location)
             //std::cout << "CHeck" << std::endl;
-            if (typeid(*tile) == typeid(*tiles[j][i])){
+            if (typeid(*tile) == typeid(*tiles[j+1][i+1])){
                 //std::cout << "Reveal" << std::endl;
-                tiles[j][i]->showTile();
+                tiles[j+1][i+1]->showTile();
         }
     }
     }
@@ -134,22 +138,12 @@ std::vector<Tile *> Board::getAdjacentTiles(int x, int y) {
     std::cout << "Adj Tiles" << std::endl;
     //TODO : combine if statements
 
-    //top left tile
-    if (x > 0 && y > 0) adjTiles.push_back(tiles[y-1][x - 1]);
-    //top right tile
-    if (x < xSize - 1 && y > 0) adjTiles.push_back(tiles[y+1][x - 1]);
-    //Bottom left tile
-    if (x > 0 && y < ySize - 1) adjTiles.push_back(tiles[y-1][x + 1]);
-    //bottom right tile
-    if (x < xSize - 1 && y < ySize - 1) adjTiles.push_back(tiles[y+1][x + 1]);
-    //Left tle
-    if (x > 0) adjTiles.push_back(tiles[y][x - 1]);
-    //right tile
-    if (x < xSize - 1) adjTiles.push_back(tiles[y][x + 1]);
-    //top tile
-    if (y > 0) adjTiles.push_back(tiles[y-1][x]);
-    //bottom tile
-    if (y < ySize - 1) adjTiles.push_back(tiles[y+1][x]);
+    for (int j = 0; j < 3; j++){
+        if(tiles[y + 1 - j][x+1]) adjTiles.push_back(tiles[y + 1 - j][x+1]);
+        if(tiles[y + 1 - j][x-1]) adjTiles.push_back(tiles[y + 1 - j][x-1]);
+    }
+        if(tiles[y + 1][x]) adjTiles.push_back(tiles[y + 1][x]);
+        if(tiles[y - 1][x]) adjTiles.push_back(tiles[y - 1][x]);
 
     return adjTiles;
 }
