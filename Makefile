@@ -8,10 +8,10 @@ mac:
 	make run
 
 compile: main.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
-	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out
+	g++ main.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out
 
 compile_mac: main.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
-	g++ Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out -Wl,-rpath,/usr/local/lib
+	g++ main.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o game.out -Wl,-rpath,/usr/local/lib
 
 run:
 	./game.out
@@ -48,6 +48,10 @@ LoadButton.o: LoadButton.cpp
 
 EntityTest: EntityTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
 	g++ EntityTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out -Wl,-rpath,/usr/local/lib
+	./test.out
+
+EntityTestMac: EntityTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
+	g++ EntityTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out
 	./test.out
 
 clean:
