@@ -19,7 +19,8 @@ class Board {
         int totalMines;
         int revealedTiles = 0;
     public:
-        Board(int width, int height, int mines);
+        Board(int width, int height, int mines, Minesweeper* game);
+        void draw(RenderWindow *window);
         bool incrementRevealedTiles();
         void swapTiles(int x, int y);
         void revealMines(Tile* tile);
