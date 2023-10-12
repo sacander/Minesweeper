@@ -4,7 +4,12 @@
 #include <random>
 #include <iostream>
 
-Board::Board(int width, int height, int mines){
+Board::Board(int width, int height, int mines, Minesweeper* game){
+
+    xSize = width;
+    ySize = height;
+    totalMines = mines;
+
     std::vector<int*> mineCoords;
 
     for (int i = 0; i < width; i++){
@@ -18,36 +23,56 @@ Board::Board(int width, int height, int mines){
         }
     }
 
-    for (int i = 0; i < 10; i++)
-    {
-        std::cout << mineCoords.at(i)[0] << ' ' << mineCoords.at(i)[1] << std::endl;
-    }
-    std::cout << "End vector" << std::endl;
-
     //First n pointers are mine coordinates
     std::shuffle(mineCoords.begin(), mineCoords.end(), std::default_random_engine(time(0))); 
 
-    //create board 2d array of 0's
-    int** board = new int*[height];
-    for (int i = 0; i < height; i++){
-        board[i] = new int[width]{};
+    //create board 2d array of 0's (with padding)
+    int** board = new int*[height + 2];
+    for (int i = 0; i < height + 2; i++){
+        board[i] = new int[width + 2]{};
     }
 
-    //Assign -1 to where mines go
+    //Assign 9 to where mines go and 
     for (int i = 0; i < mines; i++){
-        int y = mineCoords.at(i)[0];
-        int x = mineCoords.at(i)[1];
-        board[y][x] = -1;
+        int y = mineCoords.at(i)[0] + 1;
+        int x = mineCoords.at(i)[1] + 1;
+        board[y][x] = 9;
+        //add 1 to adjacent tiles (tiles with 9 or more are mines)
+        for (int j = 0; j < 3; j++){
+            board[y + 1 - j][x+1] += 1;
+            board[y + 1 - j][x-1] += 1;
+        }
+        board[y + 1][x] += 1;
+        board[y - 1][x] += 1;
     }
     
-    for (int i = 0; i < height; i++){
-        for (int j = 0; j < width; j++)
+    //Create tile array (remove buffer edges)
+    tiles = new Tile**[width];
+    for (int i = 1; i < height + 1; i++){
+        tiles[i-1] = new Tile*[height];
+        for (int j = 1; j < width + 1; j++)
         {
-            std::cout << board[i][j] << " ";
+            if (board[i][j] >= 9){
+                tiles[i-1][j-1] = new Mine(sf::Vector2f(50 + 16*i, 50 + 16*j), *game, j, i);
+            } else {
+                int value = board[i][j];
+                tiles[i-1][j-1] = new Number(Vector2f(50 + 16*i, 50 + 16*j), *game, j, i, value);
+            }
+            //std::cout << board[i][j] << " ";
         }
-        std::cout << std::endl;
+        //std::cout << std::endl;
     }
 
+}
+
+void Board::draw(RenderWindow *window){
+    for (int i = 0; i < ySize; i++){
+        for (int j = 0; j < xSize; j++){
+            tiles[i][j]->draw(window);
+        }
+        
+    }
+    
 }
 
 //Checks if all tiles have been revealed or not
