@@ -64,11 +64,3 @@ Board *Minesweeper::getBoard() {
 Timer *Minesweeper::getTimer() {
     return timer;
 }
-
-int main() {
-    Minesweeper minesweeper(500, "Minesweeper");
-    minesweeper.run();
-
-    return 0;
-}
-
