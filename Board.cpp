@@ -46,6 +46,9 @@ Board::Board(int width, int height, int mines, Minesweeper* game){
         board[y - 1][x] += 1;
     }
     
+    //Remember this template for next time
+    saveBoard = board;
+
     //Assign a safe tile coordinate
     firstSafeY = mineCoords.at(mines)[0] + 1;
     firstSafeX = mineCoords.at(mines)[1] + 1;
@@ -150,6 +153,10 @@ std::vector<Tile *> Board::getAdjacentTiles(int x, int y) {
 
 int Board::getRevealedTiles() {
     return revealedTiles;
+}
+
+int** Board::getSaveBoard(){
+    return saveBoard;
 }
 
 //Memory cleanup

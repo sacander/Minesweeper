@@ -11,6 +11,7 @@ class Board {
     private:
         //2D array containing the numbers / mines (tiles)
         Tile ** *tiles;
+        int ** saveBoard;
         int xSize;
         int ySize;
         int boardX = 50;
@@ -22,6 +23,7 @@ class Board {
         int revealedTiles = 0;
     public:
         Board(int width, int height, int mines, Minesweeper* game);
+        int** getSaveBoard();
         void draw(RenderWindow *window);
         void onClickEvent(RenderWindow *window, Event event);
         bool incrementRevealedTiles();
