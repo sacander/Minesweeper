@@ -30,6 +30,8 @@ void Minesweeper::run() {
                 test.onClickEvent(window, event);
                 test1.onClickEvent(window, event);
                 newIcon.onClickEvent(window, event);
+                loadIcon.onClickEvent(window, event);
+                saveIcon.onClickEvent(window, event);
             }
         }
 
@@ -67,12 +69,3 @@ Board *Minesweeper::getBoard() {
 Timer *Minesweeper::getTimer() {
     return timer;
 }
-
-int main() {
-    Minesweeper minesweeper(500, "Minesweeper");
-    minesweeper.newBoard(5, 5, 8);
-    minesweeper.run();
-
-    return 0;
-}
-
