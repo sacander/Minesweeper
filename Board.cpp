@@ -1,7 +1,7 @@
 #include "Board.h"
 #include <vector>
 #include <typeinfo>
-#include <bits/stdc++.h> 
+#include <random>
 #include <iostream>
 
 Board::Board(int width, int height, int mines){
@@ -23,12 +23,9 @@ Board::Board(int width, int height, int mines){
         std::cout << mineCoords.at(i)[0] << ' ' << mineCoords.at(i)[1] << std::endl;
     }
     std::cout << "End vector" << std::endl;
-    
-    
-    unsigned seed = 0;
 
     //First n pointers are mine coordinates
-    std::shuffle(mineCoords.begin(), mineCoords.end(), std::default_random_engine(seed)); 
+    std::shuffle(mineCoords.begin(), mineCoords.end(), std::default_random_engine(time(0))); 
 
     //create board 2d array of 0's
     int** board = new int*[height];
