@@ -29,6 +29,7 @@ void Minesweeper::run() {
             if (event.type == sf::Event::MouseButtonPressed) {
                 //test.onClickEvent(window, event);
                 //test1.onClickEvent(window, event);
+                board->onClickEvent(window, event);
                 newIcon.onClickEvent(window, event);
                 loadIcon.onClickEvent(window, event);
                 saveIcon.onClickEvent(window, event);

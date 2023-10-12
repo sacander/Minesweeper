@@ -69,10 +69,16 @@ void Board::draw(RenderWindow *window){
     for (int i = 0; i < ySize; i++){
         for (int j = 0; j < xSize; j++){
             tiles[i][j]->draw(window);
-        }
-        
+        }  
     }
-    
+}
+
+void Board::onClickEvent(RenderWindow *window, Event event){
+    for (int i = 0; i < ySize; i++){
+        for (int j = 0; j < xSize; j++){
+            tiles[i][j]->onClickEvent(window, event);
+        }  
+    }
 }
 
 //Checks if all tiles have been revealed or not

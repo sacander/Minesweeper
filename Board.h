@@ -21,6 +21,7 @@ class Board {
     public:
         Board(int width, int height, int mines, Minesweeper* game);
         void draw(RenderWindow *window);
+        void onClickEvent(RenderWindow *window, Event event);
         bool incrementRevealedTiles();
         void swapTiles(int x, int y);
         void revealMines(Tile* tile);
