@@ -50,12 +50,15 @@ void Minesweeper::gameWin() {}
 void Minesweeper::gameLose() {
 
     timer->stopTimer();
-    board->revealMines();
+    //board->revealMines();
     //Make it so you cant reveal tiles??
 
 }
 
-void Minesweeper::newBoard(int height, int width, int mines) {}
+Board* Minesweeper::newBoard(int height, int width, int mines) {
+    board = new Board(height, width, mines);
+    return board;
+}
 
 Board *Minesweeper::getBoard() {
     return board;
@@ -67,6 +70,7 @@ Timer *Minesweeper::getTimer() {
 
 int main() {
     Minesweeper minesweeper(500, "Minesweeper");
+    minesweeper.newBoard(5, 5, 8);
     minesweeper.run();
 
     return 0;
