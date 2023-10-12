@@ -24,7 +24,7 @@ void Timer::onRightClick() {}
 
 //sets position and the texture for the timer 
 Timer::Timer(Vector2f pos, Minesweeper &game)
-: Entity("./textures/timerbase.png", pos, game) {}
+: Entity("./textures/timerbase.png", pos, game) {display.setString("000");}
 
 Timer::~Timer() {}
 
@@ -34,4 +34,8 @@ void Timer::draw(sf::RenderWindow *window) {
   if (started == true) {
     display.setString(std::to_string(time(0) - initialTime));
   }
+}
+
+std::time_t Timer::getGameTime() {
+  return (time(0) - initialTime);
 }

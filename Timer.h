@@ -20,6 +20,7 @@ class Timer: public Entity {
         void draw(sf::RenderWindow *window);
         Timer(Vector2f pos, Minesweeper &game);
         ~Timer();
+        std::time_t getGameTime();
 };
 
 #endif
