@@ -40,7 +40,14 @@ void Minesweeper::run() {
 
 void Minesweeper::gameWin() {}
 
-void Minesweeper::gameLose() {}
+//stop timer, show all mines
+void Minesweeper::gameLose() {
+
+    timer->stopTimer();
+    board->revealMines();
+    //Make it so you cant reveal tiles??
+
+}
 
 void Minesweeper::newBoard(int height, int width, int mines) {}
 
