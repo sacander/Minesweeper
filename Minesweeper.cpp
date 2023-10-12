@@ -30,6 +30,8 @@ void Minesweeper::run() {
                 test.onClickEvent(window, event);
                 test1.onClickEvent(window, event);
                 newIcon.onClickEvent(window, event);
+                loadIcon.onClickEvent(window, event);
+                saveIcon.onClickEvent(window, event);
             }
         }
 
