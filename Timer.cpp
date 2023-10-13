@@ -27,20 +27,33 @@ Timer::Timer(Vector2f pos, Minesweeper &game)
 : Entity("./textures/timerbase.png", pos, game) {
     display.setString("000");
     display.setFillColor(Color::Black);
-    sf::Font textFont; 
-    textFont.loadFromFile("timerFont.tff");
+    display.setPosition(pos + Vector2f(18,2));
+    textFont.loadFromFile("./textures/timerFont.ttf");
     display.setFont(textFont);
-    display.setCharacterSize(30);
+    display.setCharacterSize(20);
 }
 
 Timer::~Timer() {}
 
 void Timer::draw(sf::RenderWindow *window) {
   Entity::draw(window);
+  std::string timeElapsed;
   //if the timer has started, then the display will update everytime Timer is drawn to display the current game length in seconds
   if (started == true) {
-    display.setString(std::to_string(time(0) - initialTime));
+    //timer stops at 999
+    if ((time(0) - initialTime) < 999) {
+      //three digit display
+      if ((time(0)- initialTime) < 10) {
+        timeElapsed = "00" + std::to_string(time(0)-initialTime);
+      } else if ((time(0)- initialTime) < 100) {
+        timeElapsed = "0" + std::to_string(time(0)-initialTime);
+      } else {
+        timeElapsed = std::to_string(time(0)-initialTime);
+      }
+      display.setString(timeElapsed);
+    }
   }
+  window->draw(display); 
 }
 
 std::time_t Timer::getGameTime() {

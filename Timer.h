@@ -11,6 +11,7 @@ class Timer: public Entity {
     std::time_t initialTime; //initial time at which timer and game begins 
     sf::Text display; //text to be displayed on the timer 
     bool started = false; //reflects whether the timer and game has started 
+    sf::Font textFont; // font 
     public:
         void startTimer();
         void stopTimer();
