@@ -33,4 +33,5 @@
 
 # Custom
 *.vscode
-progress.txt
+progress.csv
+.DS_Store
