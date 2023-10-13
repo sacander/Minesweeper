@@ -47,6 +47,7 @@ void Tile::toggleFlag() {
 // Checks if it is the first tile and starts the timer
 bool Tile::firstTileClicked() {
     if (game.getBoard()->getRevealedTiles() == 0) {
+        game.getTimer()->resetTimer();
         game.getTimer()->startTimer();
     }
     return false; // No swapped mine

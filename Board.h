@@ -31,6 +31,8 @@ class Board {
         void revealMines(Tile* tile);
         std::vector<Tile *> getAdjacentTiles(int x, int y);
         int getRevealedTiles();
+        int getSizeX();
+        int getSizeY();
         ~Board();
 };
 

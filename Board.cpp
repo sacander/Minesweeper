@@ -159,6 +159,14 @@ int** Board::getSaveBoard(){
     return saveBoard;
 }
 
+int Board::getSizeX() {
+    return xSize;
+}
+
+int Board::getSizeY() {
+    return ySize; 
+}
+
 //Memory cleanup
 Board::~Board(){
     delete[] tiles;

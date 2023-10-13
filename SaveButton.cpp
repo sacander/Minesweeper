@@ -20,11 +20,31 @@ void SaveButton::onRightClick() {
 void SaveButton::saveGame() {
     //saving
     std::ofstream saveFile;
-    saveFile.open("progress.txt");
+    saveFile.open("progress.csv");
+
+    // between values = , new row = /n
 
     //timer not sure if this works tbh
     saveFile << game.getTimer()->getGameTime();
-    saveFile << ","; 
+    saveFile << "\n"; 
+
+    //array 
+    int** boardArray = game.getBoard()->getSaveBoard();
+    
+    //getting size of array
+    int length = game.getBoard()->getSizeY();
+    int width = game.getBoard()->getSizeX();
+
+    std::cout << length << " " << width << std::endl;
+
+    for (int i = 1; i < length+1; i++){
+        for (int j = 1; j < width+1; j++)
+        {
+            saveFile << boardArray[i][j] << ",";
+        }
+        saveFile << "\n";
+    }
+
     saveFile.close();
 
     //needs to be saved:

@@ -26,11 +26,11 @@ void NewGameButton::newGame() {
     int numberMines = 0;
 
     //getting input for length
-    std::cout << "Please enter the desired length of the board (anywhere between 8 to 50 tiles): " << std::endl;
+    std::cout << "Please enter the desired length of the board (anywhere between 8 to 30 tiles): " << std::endl;
     std::cin >> length;
 
     //confirming acceptable input
-    while (length > 50 | length < 8) {
+    while (length > 30 | length < 8) {
         //accounts for an input that is not an integer 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -38,16 +38,16 @@ void NewGameButton::newGame() {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         //reprompts user
-        std::cout << "Please enter a length greater than 8 and less than 50: " << std::endl;
+        std::cout << "Please enter a length greater than 8 and less than 30: " << std::endl;
     std::cin >> length;
     };
 
     //getting input for width
-    std::cout << "Please enter the desired width of the board (anywhere between 8 to 50 tiles): " << std::endl;
+    std::cout << "Please enter the desired width of the board (anywhere between 8 to 30 tiles): " << std::endl;
     std::cin >> width;
 
     //confirming acceptable input
-    while (width > 50 | width < 8) {
+    while (width > 30 | width < 8) {
         //if input is not an integer 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -55,7 +55,7 @@ void NewGameButton::newGame() {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         //reprompts user
-        std::cout << "Please enter a width greater than 8 and less than 50: " << std::endl;
+        std::cout << "Please enter a width greater than 8 and less than 30: " << std::endl;
     std::cin >> width;
     };
     
@@ -77,7 +77,7 @@ void NewGameButton::newGame() {
     std::cin >> numberMines;
     };
 
-    //newBoard(length, width, numberMines); idk how to call
+    game.newBoard(length, width, numberMines); 
 
     //for testing 
     std::cout << length << " " << width << " " << numberMines << std::endl;

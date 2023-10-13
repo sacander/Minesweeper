@@ -24,7 +24,14 @@ void Timer::onRightClick() {}
 
 //sets position and the texture for the timer 
 Timer::Timer(Vector2f pos, Minesweeper &game)
-: Entity("./textures/timerbase.png", pos, game) {display.setString("000");}
+: Entity("./textures/timerbase.png", pos, game) {
+    display.setString("000");
+    display.setFillColor(Color::Black);
+    sf::Font textFont; 
+    textFont.loadFromFile("timerFont.tff");
+    display.setFont(textFont);
+    display.setCharacterSize(30);
+}
 
 Timer::~Timer() {}
 
