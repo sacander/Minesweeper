@@ -4,6 +4,7 @@
 #include <typeinfo>
 #include <random>
 #include <iostream>
+#include <cmath>
 
 Board::Board(int width, int height, int mines, Minesweeper* game, int clickX, int clickY){
 
@@ -122,20 +123,24 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
         tiles[i] = new Tile*[xSize + 2];
         for (int j = 0; j < xSize + 2; j++){   
             if (i != 0 && i != ySize + 1 && j != 0 && j != xSize + 1){
-                if (board[i][j] >= 9 && board[i][j] < 100){
+                if (abs(board[i][j]) >= 9 && abs(board[i][j]) < 100){
                     std::cout << "mine " << test;
                     tiles[i][j] = new Mine(sf::Vector2f(boardX + 16*j, boardY + 16*i), *game, j, i);
                 } else {
                     int value = board[i][j];
-                    if (value < 100){
-                        tiles[i][j] = new Number(Vector2f(boardX + 16*j, boardY + 16*i), *game, j, i, value);
+                    if (abs(value) < 100){
+                        tiles[i][j] = new Number(Vector2f(boardX + 16*j, boardY + 16*i), *game, j, i, abs(value));
                     } else {
-                        value -= 100;
+                        value = abs(value) - 100;
                         tiles[i][j] = new Number(Vector2f(boardX + 16*j, boardY + 16*i), *game, j, i, value);
                         tiles[i][j]->showTile(); 
                     }
                     
                     std::cout << "Num " << test;
+                }
+                //Toggle flags
+                if(board[i][j] < 0){
+                    tiles[i][j]->toggleFlag();
                 }
             } else {
                 tiles[i][j] = nullptr;

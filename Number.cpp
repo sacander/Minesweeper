@@ -16,7 +16,7 @@ void Number::showTile() {
 
         //Save board offset
         int **saveBoard = game.getBoard()->getSaveBoard();
-        saveBoard[yBoardPos][xBoardPos] += 100;
+        if(saveBoard[yBoardPos][xBoardPos] < 100) saveBoard[yBoardPos][xBoardPos] += 100;
 
         // Keeps general behaviour
         Tile::showTile();

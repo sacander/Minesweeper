@@ -34,12 +34,17 @@ void Tile::toggleFlag() {
         return;
     }
     // Hide flag if already flagged
+
+    int **saveBoard = game.getBoard()->getSaveBoard();
+    
     if (flag) {
         sprite.setTexture(texture);
+        saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
         flag = false;
     } else {
         // Show flag if not already flagged
         sprite.setTexture(flagTexture);
+        saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
         flag = true;
     }
 }
