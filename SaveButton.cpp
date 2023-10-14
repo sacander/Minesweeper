@@ -37,6 +37,9 @@ void SaveButton::saveGame() {
 
     std::cout << length << " " << width << std::endl;
 
+    saveFile << length << ",";
+    saveFile << width << "\n";
+
     for (int i = 1; i < length+1; i++){
         for (int j = 1; j < width+1; j++)
         {

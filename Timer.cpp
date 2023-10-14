@@ -25,6 +25,7 @@ void Timer::onRightClick() {}
 //sets position and the texture for the timer 
 Timer::Timer(Vector2f pos, Minesweeper &game)
 : Entity("./textures/timerbase.png", pos, game) {
+    initialTime = time(0);
     display.setString("000");
     display.setFillColor(Color::Black);
     display.setPosition(pos + Vector2f(18,2));
@@ -41,7 +42,7 @@ void Timer::draw(sf::RenderWindow *window) {
   //if the timer has started, then the display will update everytime Timer is drawn to display the current game length in seconds
   if (started == true) {
     //timer stops at 999
-    if ((time(0) - initialTime) < 999) {
+    if ((time(0) - initialTime) <= 999) {
       //three digit display
       if ((time(0)- initialTime) < 10) {
         timeElapsed = "00" + std::to_string(time(0)-initialTime);
@@ -58,4 +59,17 @@ void Timer::draw(sf::RenderWindow *window) {
 
 std::time_t Timer::getGameTime() {
   return (time(0) - initialTime);
+}
+
+//getters and setters for testing purposes 
+bool Timer::getStarted() {
+  return started;
+}
+
+void Timer::setInitialTime(std::time_t _initialTime) {
+  initialTime = _initialTime;
+}
+
+sf::Text Timer::getDisplay() {
+  return display;
 }

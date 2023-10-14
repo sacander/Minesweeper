@@ -22,6 +22,10 @@ class Timer: public Entity {
         Timer(Vector2f pos, Minesweeper &game);
         ~Timer();
         std::time_t getGameTime();
+        //getters and setters for testing purposes 
+        bool getStarted(); 
+        void setInitialTime(std::time_t _initialTime);
+        sf::Text getDisplay(); 
 };
 
 #endif
