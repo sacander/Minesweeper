@@ -58,7 +58,8 @@ void Board::generateBoard(int width, int height, int mines, Minesweeper * game, 
     //Assign 9 to where mines go 
     std::cout << "assign mines" << std::endl;
     int l = 0;
-    while (l < mines){
+    int m = 0;
+    while (m < mines){
         int y = mineCoords.at(l)[0] + 1;
         int x = mineCoords.at(l)[1] + 1;
         
@@ -75,6 +76,7 @@ void Board::generateBoard(int width, int height, int mines, Minesweeper * game, 
             }
             board[y + 1][x] += 1;
             board[y - 1][x] += 1;
+            m++;
         }
         l++;
     }
