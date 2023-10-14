@@ -51,7 +51,10 @@ void Minesweeper::run() {
     }
 }
 
-void Minesweeper::gameWin() {}
+void Minesweeper::gameWin() {
+    gameActive = false;
+    timer->stopTimer();
+}
 
 //stop timer, show all mines
 void Minesweeper::gameLose(Tile* mine) {
@@ -66,7 +69,10 @@ void Minesweeper::gameLose(Tile* mine) {
 }
 
 Board* Minesweeper::newBoard(int height, int width, int mines) {
+    if(newGame) delete board;
     board = new Board(height, width, mines, this);
+    gameActive = true;
+    newGame = true;
     return board;
 }
 
