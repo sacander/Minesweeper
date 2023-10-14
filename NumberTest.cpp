@@ -58,7 +58,6 @@ int main() {
         testNumber7.draw(&window);
         testNumber8.draw(&window);
         testNumber9.draw(&window);
-
         window.display();
     }
 
