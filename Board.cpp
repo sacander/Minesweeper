@@ -63,6 +63,7 @@ void Board::generateBoard(int width, int height, int mines, Minesweeper * game, 
         int x = mineCoords.at(l)[1] + 1;
         
         if((y == clickY) && (x = clickX)){
+            l++;
             continue;
         } else {
             //delete[] mineCoords[i];
