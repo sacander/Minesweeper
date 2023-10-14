@@ -23,7 +23,7 @@ Board::Board(int width, int height, int mines, Minesweeper* game, int clickX, in
 }
 
 // generateBoard(xSize, ySize, totalMines, game, x, y
-void Board::generateBoard(Minesweeper * game, int clickY, int clickX){
+void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** board = nullptr){
 
     //After first click re-calculate the board
     std::vector<int*> mineCoords;
@@ -140,6 +140,9 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX){
     std::cout << "opened tile" << std::endl;
 }
 
+void loadBoard(int ** board, int width, int height){
+
+}
 
 //Draw board
 void Board::draw(RenderWindow *window){
