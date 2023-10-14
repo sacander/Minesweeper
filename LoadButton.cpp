@@ -64,6 +64,8 @@ void LoadButton::loadGame() {
         game.getTimer()->resetTimer();
         game.getTimer()->setInitialTime(time(0)-elapsedTime);
 
+        //call load board function
+        game.getBoard()->loadBoard(boardArray, width, length);
     }
     saveFile.close();
 }

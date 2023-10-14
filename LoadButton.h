@@ -13,5 +13,4 @@ class LoadButton: public Entity {
     void onRightClick();
     void loadGame();
 };
-
 #endif
