@@ -20,8 +20,6 @@ Board::Board(int width, int height, int mines, Minesweeper* game, int clickX, in
             }
         }
     }
-    //Generate a board of numbers value 1 before first click
-    return;
 }
 
 void Board::generateBoard(int width, int height, int mines, Minesweeper * game, int clickY, int clickX){
