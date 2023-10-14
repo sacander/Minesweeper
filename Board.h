@@ -23,7 +23,7 @@ class Board {
         int revealedTiles = 0;
     public:
         Board(int width, int height, int mines, Minesweeper* game, int clickX, int clickY);
-        void loadBoard(int ** board, int width, int height);
+        void loadBoard(int ** board, int width, int height, Minesweeper * game);
         void generateBoard(Minesweeper * game, int clickX, int clickY, int ** board);
         int** getSaveBoard();
         void draw(RenderWindow *window);

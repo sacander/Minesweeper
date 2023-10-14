@@ -25,68 +25,71 @@ Board::Board(int width, int height, int mines, Minesweeper* game, int clickX, in
 // generateBoard(xSize, ySize, totalMines, game, x, y
 void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** board = nullptr){
 
-    //After first click re-calculate the board
-    std::vector<int*> mineCoords;
+    //Only calculate new board if a board is not passed
+    if(!board){  
+        //After first click re-calculate the board
+        std::vector<int*> mineCoords;
 
-    for (int i = 0; i < xSize; i++){
-        for (int j = 0; j < ySize; j++)
-        {
-            //width, height [][]
-            int* coord = new int[2];
-            coord[0] = j;
-            coord[1] = i;
-            mineCoords.push_back(coord);
-        }
-    }
-
-    std::cout << "finished vector" << std::endl;
-
-    //First n pointers are mine coordinates
-    //std::shuffle(mineCoords.begin(), mineCoords.end(), std::default_random_engine(time(0)));
-    std::default_random_engine randNum(time(0));
-
-    int N = mineCoords.size();
-    for(int j=N-1; j>N - totalMines - 2; --j) {
-        int r = randNum() % (j+1);
-        std::swap(mineCoords[j], mineCoords[r]);
-    }
-    
-    std::cout << "shuffle vector" << std::endl;
-
-    //create board 2d array of 0's (with padding)
-    int** board = new int*[ySize + 2];
-    for (int i = 0; i < ySize + 2; i++){
-        board[i] = new int[xSize + 2]{};
-    }
-
-    //Assign 9 to where mines go 
-    std::cout << "assign mines" << std::endl;
-    N = mineCoords.size();
-    int m = 0;
-    while (m < totalMines){
-        int y = mineCoords.at(N-1)[0] + 1;
-        int x = mineCoords.at(N-1)[1] + 1;
-        
-        if((y == clickY) && (x = clickX)){
-            N--;
-            continue;
-        } else {
-            //delete[] mineCoords[i];
-            board[y][x] = 9;
-            //add 1 to adjacent tiles (tiles with 9 or more are mines)
-            for (int j = 0; j < 3; j++){
-                board[y + 1 - j][x+1] += 1;
-                board[y + 1 - j][x-1] += 1;
+        for (int i = 0; i < xSize; i++){
+            for (int j = 0; j < ySize; j++)
+            {
+                //width, height [][]
+                int* coord = new int[2];
+                coord[0] = j;
+                coord[1] = i;
+                mineCoords.push_back(coord);
             }
-            board[y + 1][x] += 1;
-            board[y - 1][x] += 1;
-            m++;
         }
-        N--;
+
+        std::cout << "finished vector" << std::endl;
+
+        //First n pointers are mine coordinates
+        //std::shuffle(mineCoords.begin(), mineCoords.end(), std::default_random_engine(time(0)));
+        std::default_random_engine randNum(time(0));
+
+        int N = mineCoords.size();
+        for(int j=N-1; j>N - totalMines - 2; --j) {
+            int r = randNum() % (j+1);
+            std::swap(mineCoords[j], mineCoords[r]);
+        }
+        
+        std::cout << "shuffle vector" << std::endl;
+
+        //create board 2d array of 0's (with padding)
+        int** board = new int*[ySize + 2];
+        for (int i = 0; i < ySize + 2; i++){
+            board[i] = new int[xSize + 2]{};
+        }
+
+        //Assign 9 to where mines go 
+        std::cout << "assign mines" << std::endl;
+        N = mineCoords.size();
+        int m = 0;
+        while (m < totalMines){
+            int y = mineCoords.at(N-1)[0] + 1;
+            int x = mineCoords.at(N-1)[1] + 1;
+            
+            if((y == clickY) && (x = clickX)){
+                N--;
+                continue;
+            } else {
+                //delete[] mineCoords[i];
+                board[y][x] = 9;
+                //add 1 to adjacent tiles (tiles with 9 or more are mines)
+                for (int j = 0; j < 3; j++){
+                    board[y + 1 - j][x+1] += 1;
+                    board[y + 1 - j][x-1] += 1;
+                }
+                board[y + 1][x] += 1;
+                board[y - 1][x] += 1;
+                m++;
+            }
+            N--;
+        }
+        std::cout << "begin print mines" << std::endl;
+        //Remember this template for next time
+        saveBoard = board;
     }
-    std::cout << "begin print mines" << std::endl;
-    //Remember this template for next time
-    saveBoard = board;
 
     /*for (int i = 1; i < height+1; i++){
             for (int j = 1; j < width+1; j++)
@@ -136,12 +139,14 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
     std::cout << "made board" << std::endl; 
 
     //Reveal first tile clicked
-    tiles[clickX][clickY]->showTile();  
+    if(!board) tiles[clickX][clickY]->showTile();  
     std::cout << "opened tile" << std::endl;
 }
 
-void loadBoard(int ** board, int width, int height){
-
+void Board::loadBoard(int ** board, int width, int height, Minesweeper * game){
+    xSize = width;
+    ySize = height;
+    generateBoard(game,0,0,board);
 }
 
 //Draw board
