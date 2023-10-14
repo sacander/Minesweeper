@@ -70,11 +70,13 @@ void Minesweeper::gameLose(Tile* mine) {
 
 Board* Minesweeper::newBoard(int height, int width, int mines) {
     if(newGame) delete board;
-    board = new Board(height, width, mines, this);
+    board = new Board(height, width, mines, this, -1,-1);
     gameActive = true;
     newGame = true;
     return board;
 }
+
+
 
 Board *Minesweeper::getBoard() {
     return board;
@@ -82,4 +84,9 @@ Board *Minesweeper::getBoard() {
 
 Timer *Minesweeper::getTimer() {
     return timer;
+}
+
+void Minesweeper::setBoard(Board* boardn){
+    delete board;
+    board = boardn;
 }
