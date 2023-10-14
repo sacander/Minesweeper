@@ -15,7 +15,7 @@ bool Mine::firstTileClicked() {
         game.getTimer()->resetTimer();
         game.getTimer()->startTimer();
         std::cout << "swap tiles" << std::endl;
-        game.getBoard()->swapTiles(xBoardPos, yBoardPos, &game);
+        game.getBoard()->generateBoard(&game, xBoardPos, yBoardPos);
         return true;
     }
     return false;

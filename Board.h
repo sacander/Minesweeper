@@ -16,19 +16,19 @@ class Board {
         int ySize;
         int boardX = 50;
         int boardY = 50;
-        int firstSafeX;
-        int firstSafeY;
+        // int firstSafeX;
+        // int firstSafeY;
         bool calculatedBoard = false;
         int totalMines;
         int revealedTiles = 0;
     public:
         Board(int width, int height, int mines, Minesweeper* game, int clickX, int clickY);
-        void generateBoard(int width, int height, int mines, Minesweeper * game, int clickX, int clickY);
+        void generateBoard(Minesweeper * game, int clickX, int clickY);
         int** getSaveBoard();
         void draw(RenderWindow *window);
         void onClickEvent(RenderWindow *window, Event event);
         bool incrementRevealedTiles();
-        void swapTiles(int x, int y, Minesweeper * game);
+        // void swapTiles(int x, int y, Minesweeper * game);
         void revealMines(Tile* tile);
         std::vector<Tile *> getAdjacentTiles(int x, int y);
         int getRevealedTiles();
