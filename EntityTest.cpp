@@ -24,7 +24,7 @@ ConcreteEntity::ConcreteEntity(std::string textureFilepath, sf::Vector2f pos, Mi
 
 int main() {
     // Creates test game instance and window
-    Minesweeper game(500, "Entity Test");
+    Minesweeper game(500, "Dummy Game");
     sf::RenderWindow window(sf::VideoMode(500, 500), "Entity Test");
     ConcreteEntity testEntity1("textures/tile.png", sf::Vector2f(200, 150), game);
     // Tests that error is logged if filepath does not exist
