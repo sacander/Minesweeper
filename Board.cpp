@@ -41,12 +41,17 @@ void Board::generateBoard(int width, int height, int mines, Minesweeper * game, 
     }
 
     std::cout << "finished vector" << std::endl;
-    //erase first click as possible mine
-    //mineCoords.erase(mineCoords.begin() + height * (clickY) + clickX);
-    //std::cout << "erased vector" << std::endl;
 
     //First n pointers are mine coordinates
-    std::shuffle(mineCoords.begin(), mineCoords.end(), std::default_random_engine(time(0))); \
+    //std::shuffle(mineCoords.begin(), mineCoords.end(), std::default_random_engine(time(0)));
+    for (int i = 0; i < mines + 1; i++){
+        int N = mineCoords.size();
+        for(int j=N-1; j>0; --j) {
+            int r = rand() % (j+1);
+            std::swap(mineCoords[j], mineCoords[r]);
+        }
+    }
+
     std::cout << "shuffle vector" << std::endl;
 
     //create board 2d array of 0's (with padding)
@@ -84,13 +89,13 @@ void Board::generateBoard(int width, int height, int mines, Minesweeper * game, 
     //Remember this template for next time
     saveBoard = board;
 
-    for (int i = 1; i < height+1; i++){
+    /*for (int i = 1; i < height+1; i++){
             for (int j = 1; j < width+1; j++)
             {
                 std::cout << board[i][j] << " ";
             }
             std::cout << std::endl;
-    }
+    }*/
 
     int test = 0;
     
