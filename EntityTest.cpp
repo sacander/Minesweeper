@@ -7,20 +7,21 @@
 #include <iostream>
 
 // Makes class non-abstract
-class ConcreteEntity: public Entity {
+class ConcreteEntity : public Entity {
     private:
         void onLeftClick();
         void onRightClick();
+
     public:
         ConcreteEntity(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game);
 };
 
 // Implements test behaviour for left and right click methods
-void ConcreteEntity::onLeftClick() {std::cout << "Left click" << std::endl;}
-void ConcreteEntity::onRightClick() {std::cout << "Right click" << std::endl;}
+void ConcreteEntity::onLeftClick() { std::cout << "Left click" << std::endl; }
+void ConcreteEntity::onRightClick() { std::cout << "Right click" << std::endl; }
 
 ConcreteEntity::ConcreteEntity(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game)
-: Entity(textureFilepath, pos, game) {}
+    : Entity(textureFilepath, pos, game) {}
 
 int main() {
     // Creates test game instance and window

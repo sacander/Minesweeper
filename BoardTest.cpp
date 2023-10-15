@@ -1,14 +1,14 @@
-#include<unistd.h> 
 #include <iostream>
+#include <unistd.h>
 
 #include "Board.h"
 #include "Minesweeper.h"
 
-//Board Test Function
+// Board Test Function
 
 using namespace std;
 
-class BoardTest{
+class BoardTest {
     private:
         Minesweeper *game;
         sf::RenderWindow* window;

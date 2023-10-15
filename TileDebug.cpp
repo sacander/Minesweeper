@@ -1,5 +1,5 @@
-#include "Tile.h"
 #include "Minesweeper.h"
+#include "Tile.h"
 #include <iostream>
 
 // Constructor sets textures and prints errors if not found
@@ -36,7 +36,7 @@ void Tile::toggleFlag() {
     // Hide flag if already flagged
 
     // int **saveBoard = game.getBoard()->getSaveBoard();
-    
+
     if (flag) {
         sprite.setTexture(texture);
         // Removes flag from save board
