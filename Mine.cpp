@@ -15,17 +15,19 @@ bool Mine::firstTileClicked() {
         game.getTimer()->startTimer();
         std::cout << "swap tiles" << std::endl;
         game.getBoard()->swapTiles(xBoardPos, yBoardPos, &game);
-        return true; // Swapped mine
+        return true;
     }
-    return false; // No swapped mine
+    return false;
 }
 
 // Overrides behaviour of showTile()
 void Mine::showTile() {
-    // Only shows tile and ends game if a mine was not swapped
-    if (!firstTileClicked() && !flag) {
-        sprite.setTexture(hiddenTexture);
-        shown = true;
-        game.gameLose(this);
+    if (!flag && !shown) {
+        // Only shows tile and ends game if it is not the first tile
+        if (!firstTileClicked()) {
+            sprite.setTexture(hiddenTexture);
+            shown = true;
+            game.gameLose(this);
+        }
     }
 }

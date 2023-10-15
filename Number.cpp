@@ -12,7 +12,7 @@ Number::~Number() {}
 
 // Extends behaviour of showTile()
 void Number::showTile() {
-    if (!flag && !shown) {    
+    if (!flag && !shown) {
         // Keeps general behaviour
         Tile::showTile();
         // Shows neighbouring tiles if it has a value of 0.
