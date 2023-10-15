@@ -12,6 +12,7 @@ Mine::~Mine() {}
 // Overrides behaviour of firstTileClicked()
 bool Mine::firstTileClicked() {
     if (game.getBoard()->getRevealedTiles() == 0) {
+        game.getTimer()->resetTimer();
         game.getTimer()->startTimer();
         std::cout << "swap tiles" << std::endl;
         game.getBoard()->swapTiles(xBoardPos, yBoardPos, &game);
