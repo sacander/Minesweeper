@@ -57,6 +57,7 @@ void Minesweeper::run() {
 void Minesweeper::gameWin() {
     gameActive = false;
     timer->stopTimer();
+    std::cout << "You win!" << std::endl;
 }
 
 //stop timer, show all mines

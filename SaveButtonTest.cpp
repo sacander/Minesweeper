@@ -206,7 +206,7 @@ class SaveButtonTest {
             test1.onLeftClick();
             test1.onRightClick();
 
-            game.getBoard()->incrementRevealedTiles(0,0);
+            game.getBoard()->incrementRevealedTiles();
             std::cout << "Game started, should allow save:" << std::endl;
             test1.onLeftClick();
             test1.onRightClick();

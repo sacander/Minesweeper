@@ -32,8 +32,12 @@ Board::Board(int width, int height, int mines, Minesweeper* game, int clickX, in
 // generateBoard(xSize, ySize, totalMines, game, x, y
 void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** board){
 
+    //No tles are revealed after making a new board
+    revealedTiles = 0;
+
     //Only calculate new board if a board is not passed
     if(!board){  
+
         //After first click re-calculate the board
         std::vector<int*> mineCoords;
 
@@ -106,6 +110,8 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
     //std::cout << "y size " << ySize << std::endl;
     //std::cout << "x size " << xSize << std::endl;
 
+    int loadMines = 0;
+
     //Recreate tile array
     tiles = new Tile**[ySize + 2];
     for (int i = 0; i < ySize + 2; i++){
@@ -114,6 +120,7 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
             if (i != 0 && i != ySize + 1 && j != 0 && j != xSize + 1){
                 if (abs(board[i][j]) >= 9 && abs(board[i][j]) < 100){
                     //std::cout << "mine " << test;
+                    loadMines++;
                     tiles[i][j] = new Mine(sf::Vector2f(boardX + 16*j, boardY + 16*i), *game, j, i);
                 } else {
                     int value = board[i][j];
@@ -144,7 +151,11 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
     //std::cout << "made board" << std::endl; 
 
     //Reveal first tile clicked if not loading new board
-    if(!loading) tiles[clickX][clickY]->showTile();  
+    if(!loading){
+        tiles[clickX][clickY]->showTile(); 
+    } else {
+        totalMines = loadMines;
+    }
     //std::cout << "opened tile" << std::endl;
 }
 
@@ -186,9 +197,8 @@ void Board::onClickEvent(RenderWindow *window, Event event){
 }
 
 //Checks if all tiles have been revealed or not
-bool Board::incrementRevealedTiles(int x, int y) {
+bool Board::incrementRevealedTiles() {
     revealedTiles++;
-    
 
     //If all (non-mine) tiles have been revealed
     if (revealedTiles == xSize * ySize - totalMines){
@@ -212,16 +222,6 @@ void Board::revealMines(Tile* tile){
     }
     }
 }
-
-//Swaps tiles if the first tile clicked is a mine
-// void Board::swapTiles(int x, int y, Minesweeper * game) {
-//     //Tile* temp = tiles[x][y];
-//     //tiles[x][y] = tiles[firstSafeX][firstSafeY];
-//     //tiles[firstSafeX][firstSafeY] = temp;
-//     //swappedTiles = true;
-//     generateBoard(xSize, ySize, totalMines, game, x, y);
-    
-// }
 
 //Returns an array of addresses to tiles that are adjacent
 std::vector<Tile *> Board::getAdjacentTiles(int x, int y) {

@@ -30,7 +30,7 @@ class Board {
         bool getLoading();
         void draw(RenderWindow *window);
         void onClickEvent(RenderWindow *window, Event event);
-        bool incrementRevealedTiles(int clickX, int clickY);
+        bool incrementRevealedTiles();
         // void swapTiles(int x, int y, Minesweeper * game);
         void revealMines(Tile* tile);
         std::vector<Tile *> getAdjacentTiles(int x, int y);

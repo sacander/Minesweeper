@@ -30,7 +30,7 @@ void Number::showTile() {
             }
         }
         // Checks if game has been won
-        if (game.getBoard()->incrementRevealedTiles(xBoardPos, yBoardPos)) {
+        if (game.getBoard()->incrementRevealedTiles()) {
             game.gameWin();
         }
     }
