@@ -24,7 +24,7 @@ void SaveButton::saveGame() {
 
     // between values = , new row = /n
 
-    //timer not sure if this works tbh
+    //timer 
     saveFile << game.getTimer()->getGameTime();
     saveFile << "\n"; 
 

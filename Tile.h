@@ -2,8 +2,6 @@
 #define TILE_H
 
 #include "Entity.h"
-// class Minesweeper;
-// #include <SFML/Graphics.hpp>
 
 class Tile : public Entity {
     private:
