@@ -152,6 +152,11 @@ void Board::loadBoard(int ** board, int width, int height, Minesweeper * game){
     xSize = width-2;
     ySize = height-2;
     loading = true;
+    for (int i = 0; i < ySize + 2; i++){
+        delete[] saveBoard[i];
+    }
+    delete[] saveBoard;
+    saveBoard = board;
     generateBoard(game,-1,-1,board);
     loading = false;
     game->setGameActive(true);
@@ -264,5 +269,9 @@ void Board::cleanTiles(int height, int width){
 Board::~Board(){
     std::cout << "Board deconstructor" << std::endl;
     cleanTiles(ySize + 2, xSize + 2);
+    for (int i = 0; i < ySize + 2; i++){
+        delete[] saveBoard[i];
+    }
+    delete[] saveBoard;
 }
 
