@@ -114,3 +114,4 @@ LoadButtonTest: LoadButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o
 clean:
 	rm -f *.out
 	rm -f *.o
+	rm -f progress.csv
