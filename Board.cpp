@@ -147,15 +147,14 @@ void Board::loadBoard(int ** board, int width, int height, Minesweeper * game){
 
     //Clean tiles for new board
     cleanTiles(ySize + 2, xSize + 2);
-
-    //Offset from original board creation
-    xSize = width-2;
-    ySize = height-2;
-    loading = true;
     for (int i = 0; i < ySize + 2; i++){
         delete[] saveBoard[i];
     }
     delete[] saveBoard;
+    //Offset from original board creation
+    xSize = width-2;
+    ySize = height-2;
+    loading = true;
     saveBoard = board;
     generateBoard(game,-1,-1,board);
     loading = false;
