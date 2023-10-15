@@ -5,6 +5,7 @@ Minesweeper::Minesweeper(int size, std::string title) {
     window = new sf::RenderWindow(sf::VideoMode(size, size), title);
     timer = new Timer(Vector2f(300, 100), (*this));
     gameActive = true;
+    this->newBoard(5,10,10);
 }
 
 Minesweeper::~Minesweeper() {
