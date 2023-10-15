@@ -61,7 +61,8 @@ void LoadButton::loadGame() {
         }
 
         //set game time to previous save's timer
-        game.getTimer()->resetTimer();
+        // game.getTimer()->resetTimer();
+        game.getTimer()->startTimer();
         game.getTimer()->setInitialTime(time(0)-elapsedTime);
 
         //call load board function

@@ -1,68 +1,107 @@
 As the newGameButton class requires user input, testing is conducted manually and recorded in this test file 
 
 newGame()
-(O is output, I is input)
 
-TEST 1 : SUCCESS (inputs = within range, expected outcome = newBoard() called)
-O: Please enter the desired length of the board (anywhere between 8 to 30 tiles):
-I: 20
-O: Please enter the desired width of the board (anywhere between 8 to 30 tiles):
-I: 14
-O: Please enter the desired number of mines (from 1 up to 278 mines, recommended between 28 and 56):
-I: 50
-newBoard() called 
+TEST 1 : SUCCESS (inputs = within ranges, expected outcome = input accepted)
+Please enter the desired length of the board (anywhere between 5 to 26 tiles): 
+20
+Please enter the desired width of the board (anywhere between 5 to 26 tiles): 
+15
+Please enter the desired number of mines (from 30 to 90): 
+45
 
-TEST 2 : SUCESS (inputs = slightly above range, expected outcome = user reprompted until acceptable input)
-O: Please enter the desired length of the board (anywhere between 8 to 30 tiles): 
-I: 31
-O: Please enter a length greater than 8 and less than 30: 
-I: 31
-O: Please enter a length greater than 8 and less than 30: 
-I: 30
-O: Please enter the desired width of the board (anywhere between 8 to 30 tiles): 
-I: 31
-O: Please enter a width greater than 8 and less than 30: 
-I: 32
-O: Please enter a width greater than 8 and less than 30: 
-I: 30
-O: Please enter the desired number of mines (from 1 up to 898 mines, recommended between 90 and 180): 
-I: 899
-O: Please enter a number of mines from 1 up to 898 tiles: 
-I: 899
-O: Please enter a number of mines from 1 up to 898 tiles: 
-I: 898
-newBoard() called 
+TEST 2 : SUCCESS (inputs = slightly above range (boundary case), expected outcome = user reprompted until acceptable input)
+Please enter the desired length of the board (anywhere between 5 to 26 tiles): 
+27  
+Please enter an integer (whole number) length greater than 5 and less than 26: 
+27
+Please enter an integer (whole number) length greater than 5 and less than 26: 
+26
+Please enter the desired width of the board (anywhere between 5 to 26 tiles): 
+27
+Please enter an integer (whole number) width greater than 5 and less than 26: 
+27
+Please enter an integer (whole number) width greater than 5 and less than 26: 
+26
+Please enter the desired number of mines (from 67 to 202): 
+203
+Please enter an integer (whole number) number of mines from 67 to 202 tiles: 
+203
+Please enter an integer (whole number) number of mines from 67 to 202 tiles: 
+202
 
-TEST 3 : SUCCESS (inputs = slightly below range, expected outcome = user reprompted until acceptable input)
-O: Please enter the desired length of the board (anywhere between 8 to 30 tiles): 
-I: 7
-O: Please enter a length greater than 8 and less than 30: 
-I: 7
-O: Please enter a length greater than 8 and less than 30: 
-I: 8
-O: Please enter the desired width of the board (anywhere between 8 to 30 tiles): 
-I: 7
-O: Please enter a width greater than 8 and less than 30: 
-I: 7
-O: Please enter a width greater than 8 and less than 30: 
-I: 8
-O: Please enter the desired number of mines (from 1 up to 62 mines, recommended between 6.4 and 12.8): 
-I: 0
-O: Please enter a number of mines from 1 up to 62 tiles: 
-I: 0
-O: Please enter a number of mines from 1 up to 62 tiles: 
-I: 1
-newBoard() called
+TEST 3 : SUCCESS (inputs = max of range (boundary case), expected outcome = input accepted)
+Please enter the desired length of the board (anywhere between 5 to 26 tiles): 
+26
+Please enter the desired width of the board (anywhere between 5 to 26 tiles): 
+26
+Please enter the desired number of mines (from 67 to 202): 
+202
 
-TEST _ (inputs = non-integers, expected outcome = user reprompted until acceptable input)
-Please enter the desired length of the board (anywhere between 8 to 30 tiles): 
-abc
-Please enter a length greater than 8 and less than 30: 
-$%
-Please enter a length greater than 8 and less than 30: 
-d
-Please enter a length greater than 8 and less than 30: 
-1.5
-Please enter a length greater than 8 and less than 30: 
-Please enter a length greater than 8 and less than 30:
-^^ prompt repeats twice if decimal out of range entered 
+TEST 4 : SUCCESS (inputs = slightly below range (boundary case), expected outcome = user reprompted until acceptable input)
+Please enter the desired length of the board (anywhere between 5 to 26 tiles): 
+4
+Please enter an integer (whole number) length greater than 5 and less than 26: 
+4
+Please enter an integer (whole number) length greater than 5 and less than 26: 
+5
+Please enter the desired width of the board (anywhere between 5 to 26 tiles): 
+4
+Please enter an integer (whole number) width greater than 5 and less than 26: 
+4
+Please enter an integer (whole number) width greater than 5 and less than 26: 
+5
+Please enter the desired number of mines (from 2 to 7): 
+1
+Please enter an integer (whole number) number of mines from 2 to 7 tiles: 
+1
+Please enter an integer (whole number) number of mines from 2 to 7 tiles: 
+2
+
+TEST 5 : SUCCESS (inputs = min of range (boundary case), expected outcome = input accepted)
+Please enter the desired length of the board (anywhere between 5 to 26 tiles): 
+5
+Please enter the desired width of the board (anywhere between 5 to 26 tiles): 
+5
+Please enter the desired number of mines (from 2 to 7): 
+2
+
+TEST 6 : SUCCESS (inputs = non-integers out of range, expected outcome = user reprompted until acceptable input)
+Please enter the desired length of the board (anywhere between 5 to 26 tiles): 
+aaafnrjsvr
+Please enter an integer (whole number) length greater than 5 and less than 26: 
+AA#$!#RFE2w
+Please enter an integer (whole number) length greater than 5 and less than 26: 
+10
+Please enter the desired width of the board (anywhere between 5 to 26 tiles): 
+4.32 
+Please enter an integer (whole number) width greater than 5 and less than 26: 
+BEWQE341WS
+Please enter an integer (whole number) width greater than 5 and less than 26: 
+10
+Please enter the desired number of mines (from 10 to 30): 
+#@!$%$rsfgs
+Please enter an integer (whole number) number of mines from 10 to 30 tiles: 
+32.12.3
+Please enter an integer (whole number) number of mines from 10 to 30 tiles: 
+10
+
+TEST 7 : SUCCESS (inputs = non-integers in range, expected outcome = user reprompted until acceptable input)
+Please enter the desired length of the board (anywhere between 5 to 26 tiles): 
+10.34
+Please enter an integer (whole number) length greater than 5 and less than 26: 
+15.4
+Please enter an integer (whole number) length greater than 5 and less than 26: 
+15
+Please enter the desired width of the board (anywhere between 5 to 26 tiles): 
+23.4
+Please enter an integer (whole number) width greater than 5 and less than 26: 
+20.1
+Please enter an integer (whole number) width greater than 5 and less than 26: 
+16
+Please enter the desired number of mines (from 24 to 72): 
+25.6
+Please enter an integer (whole number) number of mines from 24 to 72 tiles: 
+50.324
+Please enter an integer (whole number) number of mines from 24 to 72 tiles: 
+50
