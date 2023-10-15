@@ -21,6 +21,12 @@ Board::Board(int width, int height, int mines, Minesweeper* game, int clickX, in
             }
         }
     }
+    //create board 2d array of 0's (with padding)
+    int **board = new int*[ySize + 2];
+    for (int i = 0; i < ySize + 2; i++){
+        board[i] = new int[xSize + 2]{};
+    }
+    saveBoard = board;
 }
 
 // generateBoard(xSize, ySize, totalMines, game, x, y
@@ -248,6 +254,10 @@ int Board::getSizeX() {
 
 int Board::getSizeY() {
     return ySize; 
+}
+
+bool Board::getLoading() {
+    return loading; 
 }
 
 void Board::cleanTiles(int height, int width){

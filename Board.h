@@ -27,6 +27,7 @@ class Board {
         void loadBoard(int ** board, int width, int height, Minesweeper * game);
         void generateBoard(Minesweeper * game, int clickX, int clickY, int ** board);
         int** getSaveBoard();
+        bool getLoading();
         void draw(RenderWindow *window);
         void onClickEvent(RenderWindow *window, Event event);
         bool incrementRevealedTiles(int clickX, int clickY);
