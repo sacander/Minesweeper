@@ -5,6 +5,7 @@ Minesweeper::Minesweeper(int size, std::string title) {
     window = new sf::RenderWindow(sf::VideoMode(size, size), title);
     timer = new Timer(Vector2f(357.9, 15), (*this));
     gameActive = true;
+    this->newBoard(5,10,10);
 }
 
 Minesweeper::~Minesweeper() {
@@ -70,11 +71,13 @@ void Minesweeper::gameLose(Tile* mine) {
 
 Board* Minesweeper::newBoard(int height, int width, int mines) {
     if(newGame) delete board;
-    board = new Board(height, width, mines, this);
+    board = new Board(height, width, mines, this, -1,-1);
     gameActive = true;
     newGame = true;
     return board;
 }
+
+
 
 Board *Minesweeper::getBoard() {
     return board;
@@ -82,4 +85,9 @@ Board *Minesweeper::getBoard() {
 
 Timer *Minesweeper::getTimer() {
     return timer;
+}
+
+void Minesweeper::setBoard(Board* boardn){
+    delete board;
+    board = boardn;
 }

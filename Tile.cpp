@@ -49,14 +49,15 @@ bool Tile::firstTileClicked() {
     if (game.getBoard()->getRevealedTiles() == 0) {
         game.getTimer()->resetTimer();
         game.getTimer()->startTimer();
+        return true;
     }
-    return false; // No swapped mine
+    return false;
 }
 
 // Calls firstTileClicked() then shows hidden sprite and updates shown status
 void Tile::showTile() {
-    // Only shows tile if a mine was not swapped
-    if (!firstTileClicked()) {
+    // Only does anything if not flagged and not already shown
+    if (!flag && !shown) {
         sprite.setTexture(hiddenTexture);
         shown = true;
     }

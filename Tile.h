@@ -12,7 +12,7 @@ class Tile : public Entity {
         void onRightClick();
         // Right click toggles flag
         void toggleFlag();
-        // Starts timer when the first tile is clicked
+        // Checks if this is the first tile and returns this value, in addition to starting timer and generating board
         virtual bool firstTileClicked();
 
     protected:
