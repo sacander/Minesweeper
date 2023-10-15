@@ -25,7 +25,7 @@ class Timer: public Entity {
         //getters and setters for testing purposes 
         bool getStarted(); 
         void setInitialTime(std::time_t _initialTime);
-        sf::Text getDisplay(); 
+        //sf::Text getDisplay(); 
 };
 
 #endif

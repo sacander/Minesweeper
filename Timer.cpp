@@ -70,6 +70,6 @@ void Timer::setInitialTime(std::time_t _initialTime) {
   initialTime = _initialTime;
 }
 
-sf::Text Timer::getDisplay() {
-  return display;
-}
+// sf::Text Timer::getDisplay() {
+//   return display;
+// }

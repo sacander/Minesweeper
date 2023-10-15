@@ -3,7 +3,7 @@
 
 Minesweeper::Minesweeper(int size, std::string title) {
     window = new sf::RenderWindow(sf::VideoMode(size, size), title);
-    timer = new Timer(Vector2f(300, 100), (*this));
+    timer = new Timer(Vector2f(357.9, 15), (*this));
     gameActive = true;
 }
 
@@ -16,9 +16,9 @@ void Minesweeper::run() {
     //Number test(Vector2f(50, 50), *this, 0, 0, 5);
     //test.showTile();
    // Mine test1(Vector2f(66, 50), *this, 0, 0);
-    NewGameButton newIcon(Vector2f(300, 50), *this);
-    SaveButton saveIcon(Vector2f(200, 50), *this);
-    LoadButton loadIcon(Vector2f(200, 100), *this);
+    NewGameButton newIcon(Vector2f(60, 15), *this);
+    SaveButton saveIcon(Vector2f(159.3, 15), *this);
+    LoadButton loadIcon(Vector2f(258.6, 15), *this);
 
     while (window->isOpen()) {
         sf::Event event;

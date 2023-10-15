@@ -1,0 +1,68 @@
+As the newGameButton class requires user input, testing is conducted manually and recorded in this test file 
+
+newGame()
+(O is output, I is input)
+
+TEST 1 : SUCCESS (inputs = within range, expected outcome = newBoard() called)
+O: Please enter the desired length of the board (anywhere between 8 to 30 tiles):
+I: 20
+O: Please enter the desired width of the board (anywhere between 8 to 30 tiles):
+I: 14
+O: Please enter the desired number of mines (from 1 up to 278 mines, recommended between 28 and 56):
+I: 50
+newBoard() called 
+
+TEST 2 : SUCESS (inputs = slightly above range, expected outcome = user reprompted until acceptable input)
+O: Please enter the desired length of the board (anywhere between 8 to 30 tiles): 
+I: 31
+O: Please enter a length greater than 8 and less than 30: 
+I: 31
+O: Please enter a length greater than 8 and less than 30: 
+I: 30
+O: Please enter the desired width of the board (anywhere between 8 to 30 tiles): 
+I: 31
+O: Please enter a width greater than 8 and less than 30: 
+I: 32
+O: Please enter a width greater than 8 and less than 30: 
+I: 30
+O: Please enter the desired number of mines (from 1 up to 898 mines, recommended between 90 and 180): 
+I: 899
+O: Please enter a number of mines from 1 up to 898 tiles: 
+I: 899
+O: Please enter a number of mines from 1 up to 898 tiles: 
+I: 898
+newBoard() called 
+
+TEST 3 : SUCCESS (inputs = slightly below range, expected outcome = user reprompted until acceptable input)
+O: Please enter the desired length of the board (anywhere between 8 to 30 tiles): 
+I: 7
+O: Please enter a length greater than 8 and less than 30: 
+I: 7
+O: Please enter a length greater than 8 and less than 30: 
+I: 8
+O: Please enter the desired width of the board (anywhere between 8 to 30 tiles): 
+I: 7
+O: Please enter a width greater than 8 and less than 30: 
+I: 7
+O: Please enter a width greater than 8 and less than 30: 
+I: 8
+O: Please enter the desired number of mines (from 1 up to 62 mines, recommended between 6.4 and 12.8): 
+I: 0
+O: Please enter a number of mines from 1 up to 62 tiles: 
+I: 0
+O: Please enter a number of mines from 1 up to 62 tiles: 
+I: 1
+newBoard() called
+
+TEST _ (inputs = non-integers, expected outcome = user reprompted until acceptable input)
+Please enter the desired length of the board (anywhere between 8 to 30 tiles): 
+abc
+Please enter a length greater than 8 and less than 30: 
+$%
+Please enter a length greater than 8 and less than 30: 
+d
+Please enter a length greater than 8 and less than 30: 
+1.5
+Please enter a length greater than 8 and less than 30: 
+Please enter a length greater than 8 and less than 30:
+^^ prompt repeats twice if decimal out of range entered 
