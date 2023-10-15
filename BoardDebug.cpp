@@ -52,7 +52,7 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
             }
         }
 
-        //std::cout << "finished vector" << std::endl;
+        std::cout << "finished vector" << std::endl;
 
         //First n pointers are mine coordinates
         //std::shuffle(mineCoords.begin(), mineCoords.end(), std::default_random_engine(time(0)));
@@ -64,7 +64,7 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
             std::swap(mineCoords[j], mineCoords[r]);
         }
         
-        //std::cout << "shuffle vector" << std::endl;
+        std::cout << "shuffle vector" << std::endl;
 
         //create board 2d array of 0's (with padding)
         board = new int*[ySize + 2];
@@ -73,7 +73,7 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
         }
 
         //Assign 9 to where mines go 
-        //std::cout << "assign mines" << std::endl;
+        std::cout << "assign mines" << std::endl;
         N = mineCoords.size();
         int m = 0;
         while (m < totalMines){
@@ -105,10 +105,10 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
         cleanTiles(ySize + 2, xSize + 2);
     }
 
-    //int test = 0;
+    int test = 0;
     
-    //std::cout << "y size " << ySize << std::endl;
-    //std::cout << "x size " << xSize << std::endl;
+    std::cout << "y size " << ySize << std::endl;
+    std::cout << "x size " << xSize << std::endl;
 
     int loadMines = 0;
 
@@ -119,7 +119,7 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
         for (int j = 0; j < xSize + 2; j++){   
             if (i != 0 && i != ySize + 1 && j != 0 && j != xSize + 1){
                 if (abs(board[i][j]) >= 9 && abs(board[i][j]) < 100){
-                    //std::cout << "mine " << test;
+                    std::cout << "mine " << test;
                     loadMines++;
                     tiles[i][j] = new Mine(sf::Vector2f(boardX + 16*j, boardY + 16*i), *game, j, i);
                 } else {
@@ -132,7 +132,7 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
                         tiles[i][j]->showTile(); 
                     }
                     
-                    //std::cout << "Num " << test;
+                    std::cout << "Num " << test;
                 }
                 //Toggle flags
                 if(board[i][j] < 0){
@@ -140,15 +140,15 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
                 }
             } else {
                 tiles[i][j] = nullptr;
-                //std::cout << "null " << test;
-                //test++;
+                std::cout << "null " << test;
+                test++;
             }
-            //std::cout << board[i][j] << " ";
+            std::cout << board[i][j] << " ";
         }
-        //std::cout << std::endl;
+        std::cout << std::endl;
     }
 
-    //std::cout << "made board" << std::endl; 
+    std::cout << "made board" << std::endl; 
 
     //Reveal first tile clicked if not loading new board
     if(!loading){
@@ -156,7 +156,7 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
     } else {
         totalMines = loadMines;
     }
-    //std::cout << "opened tile" << std::endl;
+    std::cout << "opened tile" << std::endl;
 }
 
 //Load a board from a save
@@ -209,7 +209,7 @@ bool Board::incrementRevealedTiles() {
 
 //Reveals all mines when game is lost
 void Board::revealMines(Tile* tile){
-    //std::cout << "Reveal Mines:" << std::endl;
+    std::cout << "Reveal Mines:" << std::endl;
 
     for (int i = 0; i < xSize; i++){
         for (int j = 0; j < ySize; j++){
@@ -226,7 +226,6 @@ void Board::revealMines(Tile* tile){
 //Returns an array of addresses to tiles that are adjacent
 std::vector<Tile *> Board::getAdjacentTiles(int x, int y) {
     std::vector<Tile*> adjTiles;
-    //std::cout << "Adj Tiles" << std::endl;
     //Only return adjacent if not loading a new game
     if(!loading){
         for (int j = 0; j < 3; j++){
@@ -237,6 +236,7 @@ std::vector<Tile *> Board::getAdjacentTiles(int x, int y) {
         if(tiles[y - 1][x]) adjTiles.push_back(tiles[y - 1][x]);
 
     }
+    std::cout <<"Adj Tiles: " << adjTiles.size() << std::endl;
     return adjTiles;
 }
 
@@ -271,12 +271,12 @@ void Board::cleanTiles(int height, int width){
         delete[] tiles[i];
     }
     delete[] tiles;
-    //std::cout << "done cleaning memory " << std::endl;
+    std::cout << "done cleaning memory " << std::endl;
 }
 
 //Memory cleanup
 Board::~Board(){
-    //std::cout << "Board deconstructor" << std::endl;
+    std::cout << "Board deconstructor" << std::endl;
     cleanTiles(ySize + 2, xSize + 2);
     for (int i = 0; i < ySize + 2; i++){
         delete[] saveBoard[i];

@@ -111,6 +111,17 @@ LoadButtonTest: LoadButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o
 	g++ LoadButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out
 	./test.out
 
+BoardTest: BoardTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
+	g++ BoardTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out
+	./test.out
+
+BoardDebug: main.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o BoardDebug.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
+	g++ main.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o BoardDebug.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out
+	./test.out
+
+BoardDebug.o: BoardDebug.cpp
+	g++ -c BoardDebug.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o BoardDebug.o
+
 clean:
 	rm -f *.out
 	rm -f *.o
