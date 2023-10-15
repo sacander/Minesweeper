@@ -21,6 +21,7 @@ class Board {
         bool loading = false;
         int totalMines;
         int revealedTiles = 0;
+        void cleanTiles(int height, int width);
     public:
         Board(int width, int height, int mines, Minesweeper* game, int clickX, int clickY);
         void loadBoard(int ** board, int width, int height, Minesweeper * game);

@@ -90,6 +90,9 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
         std::cout << "begin print mines" << std::endl;
         //Remember this template for next time
         saveBoard = board;
+
+        //Clean tiles for new allocation
+        cleanTiles(ySize + 2, xSize + 2);
     }
 
     for (int i = 0; i < ySize; i++){
@@ -102,18 +105,6 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
 
     int test = 0;
     
-    //Clean memory
-    std::cout << "clean memory " << std::endl;
-    for (int i = 0; i < ySize + 2; i++)
-    {
-        for (int j = 0; j < xSize + 2; j++)
-        {
-            delete tiles[i][j];
-        }
-        delete[] tiles[i];
-    }
-    delete[] tiles;
-    std::cout << "done cleaning memory " << std::endl;
     std::cout << "y size " << ySize << std::endl;
     std::cout << "x size " << xSize << std::endl;
 
@@ -161,6 +152,9 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
 
 //Load a board from a save
 void Board::loadBoard(int ** board, int width, int height, Minesweeper * game){
+
+    //Clean tiles for new board
+    cleanTiles(ySize + 2, xSize + 2);
 
     //Offset from original board creation
     xSize = width-2;
@@ -260,17 +254,23 @@ int Board::getSizeY() {
     return ySize; 
 }
 
-//Memory cleanup
-Board::~Board(){
-    std::cout << "Board deconstructor" << std::endl;
-    for (int i = 0; i < ySize + 2; i++)
+void Board::cleanTiles(int height, int width){
+    std::cout << "clean memory " << std::endl;
+    for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j < xSize + 2; j++)
+        for (int j = 0; j < width; j++)
         {
             delete tiles[i][j];
         }
         delete[] tiles[i];
     }
     delete[] tiles;
+    std::cout << "done cleaning memory " << std::endl;
+}
+
+//Memory cleanup
+Board::~Board(){
+    std::cout << "Board deconstructor" << std::endl;
+    cleanTiles(ySize + 2, xSize + 2);
 }
 
