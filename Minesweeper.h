@@ -23,6 +23,7 @@ class Minesweeper {
         void run();
         void gameWin();
         void gameLose(Tile* mine);
+        void setBoard(Board* board);
         Board *getBoard();
         Timer *getTimer();
         Board *newBoard(int height, int width, int mines);

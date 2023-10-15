@@ -1,5 +1,6 @@
 #include "Mine.h"
 #include "Minesweeper.h"
+#include <iostream>
 
 // Constructor just calls tile constructor
 Mine::Mine(sf::Vector2f pos, Minesweeper &game, int xBoardPos, int yBoardPos)
@@ -12,7 +13,8 @@ Mine::~Mine() {}
 bool Mine::firstTileClicked() {
     if (game.getBoard()->getRevealedTiles() == 0) {
         game.getTimer()->startTimer();
-        game.getBoard()->swapTiles(xBoardPos, yBoardPos);
+        std::cout << "swap tiles" << std::endl;
+        game.getBoard()->swapTiles(xBoardPos, yBoardPos, &game);
         return true; // Swapped mine
     }
     return false; // No swapped mine
