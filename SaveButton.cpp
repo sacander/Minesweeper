@@ -33,11 +33,11 @@ void SaveButton::saveGame() {
     
     //getting size of array
     int length = game.getBoard()->getSizeY() + 2;
-    std::cout << length << std::endl;
+    //std::cout << length << std::endl;
     int width = game.getBoard()->getSizeX() + 2;
-    std::cout << width << std::endl;
+    //std::cout << width << std::endl;
 
-    std::cout << length << " " << width << std::endl;
+    //std::cout << length << " " << width << std::endl;
 
     saveFile << length << ",";
     saveFile << width << "\n";
@@ -46,10 +46,10 @@ void SaveButton::saveGame() {
         for (int j = 0; j < width; j++)
         {
             saveFile << boardArray[i][j] << ",";
-            std::cout << boardArray[i][j];
+            //std::cout << boardArray[i][j];
         }
         saveFile << "\n";
-        std::cout << std::endl;
+        //std::cout << std::endl;
     }
 
     saveFile.close();
