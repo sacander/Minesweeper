@@ -95,14 +95,6 @@ void Board::generateBoard(Minesweeper * game, int clickY, int clickX, int ** boa
         cleanTiles(ySize + 2, xSize + 2);
     }
 
-    for (int i = 0; i < ySize; i++){
-            for (int j = 0; j < xSize; j++)
-            {
-                std::cout << board[i][j] << " ";
-            }
-            std::cout << std::endl;
-    }
-
     int test = 0;
     
     std::cout << "y size " << ySize << std::endl;
