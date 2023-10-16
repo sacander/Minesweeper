@@ -20,7 +20,7 @@ class Entity {
 
     public:
         Entity(std::string textureFilepath, sf::Vector2f pos, Minesweeper &game);
-        ~Entity();
+        virtual ~Entity();
         // Called for every entity whenever a click occurs
         void onClickEvent(sf::RenderWindow *window, sf::Event &event);
         // Draws entity to the window
