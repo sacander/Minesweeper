@@ -31,7 +31,7 @@ void NewGameButton::newGame() {
     std::cin >> length;
     
     //confirming acceptable input
-    while (length > 26 | length < 5 | std::cin.fail() | std::cin.peek() == '.') {
+    while (length > 26 || length < 5 || std::cin.fail() || std::cin.peek() == '.') {
         //clear 
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -45,7 +45,7 @@ void NewGameButton::newGame() {
     std::cin >> width;
 
     //confirming acceptable input
-    while (width > 26 | width < 5 | std::cin.fail() | std::cin.peek() == '.') {
+    while (width > 26 || width < 5 || std::cin.fail() || std::cin.peek() == '.') {
         //clear 
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -59,7 +59,7 @@ void NewGameButton::newGame() {
     std::cin >> numberMines;
 
     //confirming acceptable input 
-    while (numberMines > floor(length * width * 0.3) | numberMines < floor(length * width * 0.1) | std::cin.fail() | std::cin.peek() == '.') {
+    while (numberMines > floor(length * width * 0.3) || numberMines < floor(length * width * 0.1) || std::cin.fail() || std::cin.peek() == '.') {
         //clear 
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
