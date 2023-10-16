@@ -14,7 +14,6 @@ bool Mine::firstTileClicked() {
     if (game.getBoard()->getRevealedTiles() == 0) {
         game.getTimer()->resetTimer();
         game.getTimer()->startTimer();
-        std::cout << "swap tiles" << std::endl;
         // std::cout << "Generate board" << std::endl;
         game.getBoard()->generateBoard(&game, xBoardPos, yBoardPos, nullptr);
         return true;
