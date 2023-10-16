@@ -10,11 +10,23 @@ SaveButton::SaveButton(Vector2f pos, Minesweeper &game)
 SaveButton::~SaveButton() {}
 
 void SaveButton::onLeftClick() {
-    saveGame();
+    //if timer has begun, allow save
+    if (game.getTimer()->getStarted()) {
+        std::cout << "saving..." << std::endl;
+        saveGame();
+    } else {
+        std::cout << "Cannot save a game that has not commenced" << std::endl;
+    }
 }
 
 void SaveButton::onRightClick() {
-    saveGame();
+    //if timer has begun, allow save
+    if (game.getTimer()->getStarted()) {
+        saveGame();
+        std::cout << "saving..." << std::endl;
+    } else {
+        std::cout << "Cannot save a game that has not commenced" << std::endl;
+    }
 }
 
 void SaveButton::saveGame() {
