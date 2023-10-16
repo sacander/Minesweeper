@@ -62,6 +62,17 @@ TileTest: TileTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Tim
 	g++ TileTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out
 	./test.out
 
+NumberTestMac: NumberTest.cpp Minesweeper.o Entity.o Tile.o Mine.o NumberDebug.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
+	g++ NumberTest.cpp Minesweeper.o Entity.o Tile.o Mine.o NumberDebug.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out -Wl,-rpath,/usr/local/lib
+	./test.out
+
+NumberTest: NumberTest.cpp Minesweeper.o Entity.o Tile.o Mine.o NumberDebug.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
+	g++ NumberTest.cpp Minesweeper.o Entity.o Tile.o Mine.o NumberDebug.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out
+	./test.out
+
+NumberDebug.o: NumberDebug.cpp
+	g++ -c NumberDebug.cpp -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o NumberDebug.o
+
 TimerTestMac: TimerTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
 	g++ TimerTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out -Wl,-rpath,/usr/local/lib
 	./test.out

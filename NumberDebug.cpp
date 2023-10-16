@@ -1,3 +1,5 @@
+// Alternate debug configuration of Number for testing
+
 #include "Number.h"
 #include "Minesweeper.h"
 #include <vector>
@@ -17,16 +19,17 @@ void Number::showTile() {
         Tile::showTile();
         // Shows neighbouring tiles if it has a value of 0.
         if (value == 0) {
-            std::vector<Tile*> adjacentTiles = game.getBoard()->getAdjacentTiles(xBoardPos, yBoardPos);
-            int length = adjacentTiles.size();
-            // std::cout << length << " length" << std::endl;
-            for (int i = 0; i < length; i++) {
-                adjacentTiles.at(i)->showTile();
-            }
+            std::cout << "Show adjacent tiles" << std::endl;
+            // std::vector<Tile*> adjacentTiles = game.getBoard()->getAdjacentTiles(xBoardPos, yBoardPos);
+            // int length = adjacentTiles.size();
+            // // std::cout << length << " length" << std::endl;
+            // for (int i = 0; i < length; i++) {
+            //     adjacentTiles.at(i)->showTile();
+            // }
         }
         // Checks if game has been won
-        if (game.getBoard()->incrementRevealedTiles()) {
-            game.gameWin();
+        if (std::cout << "Increment tiles" << std::endl) {
+            // game.gameWin();
         }
     }
 }
