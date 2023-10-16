@@ -8,9 +8,11 @@ Minesweeper::Minesweeper(int size, std::string title) {
     this->newBoard(5,10,10);
 }
 
+//Memory cleanup
 Minesweeper::~Minesweeper() {
     delete window;
     delete timer;
+    delete board;
 }
 
 void Minesweeper::run() {

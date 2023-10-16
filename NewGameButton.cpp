@@ -2,6 +2,7 @@
 #include "Minesweeper.h"
 #include <iostream>
 #include <limits>
+#include <cmath>
 
 //sets the texture for the new game button
 NewGameButton::NewGameButton(Vector2f pos, Minesweeper &game) 
