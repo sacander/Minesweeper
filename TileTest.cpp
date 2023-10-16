@@ -26,6 +26,7 @@ int main() {
             if (event.type == sf::Event::MouseButtonPressed) {
                 // Tests showTile on left click and toggleFlag on right click
                 // Need to test:
+                // Tiles cannot be flagged when there are no revealed tiles
                 // Right click toggles the flag
                 // Left click does nothing when flagged
                 // Left click on blank tile reveals it

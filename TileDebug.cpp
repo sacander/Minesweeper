@@ -30,30 +30,35 @@ void Tile::onRightClick() {
 // Behaviour for toggling the flag
 void Tile::toggleFlag() {
     // Flag cannot be toggled if tile is revealed or if no tiles are revealed
-    if (shown || !firstTileClicked()) {
+    if (shown || firstTileClicked()) {
         return;
     }
     // Hide flag if already flagged
 
-    int **saveBoard = game.getBoard()->getSaveBoard();
+    // int **saveBoard = game.getBoard()->getSaveBoard();
     
     if (flag) {
         sprite.setTexture(texture);
         // Removes flag from save board
-        saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
+        std::cout << "Remove flag" << std::endl;
+        // saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
         flag = false;
     } else {
         // Show flag if not already flagged
         sprite.setTexture(flagTexture);
         // Writes flag to save board
-        saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
+        std::cout << "Write flag" << std::endl;
+        // saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
         flag = true;
     }
 }
 
 // Checks if it is the first tile
 bool Tile::firstTileClicked() {
-    if (game.getBoard()->getRevealedTiles() == 0) {
+    int revealedTiles;
+    std::cout << "Enter test value: ";
+    std::cin >> revealedTiles;
+    if (revealedTiles == 0) {
         return true;
     }
     return false;
