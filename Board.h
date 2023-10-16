@@ -16,8 +16,8 @@ class Board {
         int ySize;
         int boardX = 50;
         int boardY = 50;
-        int firstSafeX;
-        int firstSafeY;
+        // int firstSafeX;
+        // int firstSafeY;
         bool calculatedBoard = false;
         int totalMines;
         int revealedTiles = 0;
