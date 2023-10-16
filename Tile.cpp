@@ -29,8 +29,8 @@ void Tile::onRightClick() {
 
 // Behaviour for toggling the flag
 void Tile::toggleFlag() {
-    // Flag cannot be toggled if tile is revealed
-    if (shown) {
+    // Flag cannot be toggled if tile is revealed or if no tiles are revealed
+    if (shown || game.getBoard()->getRevealedTiles() == 0) {
         return;
     }
     // Hide flag if already flagged
@@ -39,11 +39,13 @@ void Tile::toggleFlag() {
     
     if (flag) {
         sprite.setTexture(texture);
+        // Writes flag to save board
         saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
         flag = false;
     } else {
         // Show flag if not already flagged
         sprite.setTexture(flagTexture);
+        // Removes flag from save board
         saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
         flag = true;
     }
