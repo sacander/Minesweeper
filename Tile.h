@@ -10,8 +10,6 @@ class Tile : public Entity {
         // Implement onClick functions so class is no longer abstract
         void onLeftClick();
         void onRightClick();
-        // Right click toggles flag
-        void toggleFlag();
         // Checks if this is the first tile and returns this value, in addition to starting timer and generating board
         virtual bool firstTileClicked();
 
@@ -31,6 +29,8 @@ class Tile : public Entity {
         ~Tile();
         // Left click shows tile, and can also be called from board after a swap
         virtual void showTile();
+        // Right click toggles flag
+        void toggleFlag();
 };
 
 #endif

@@ -11,12 +11,14 @@ Mine::~Mine() {}
 
 // Overrides behaviour of firstTileClicked()
 bool Mine::firstTileClicked() {
-    if (game.getBoard()->getRevealedTiles() == 0) {
-        game.getTimer()->resetTimer();
-        game.getTimer()->startTimer();
-        std::cout << "swap tiles" << std::endl;
-        // std::cout << "Generate board" << std::endl;
-        game.getBoard()->generateBoard(&game, xBoardPos, yBoardPos, nullptr);
+    int revealedTiles;
+    std::cout << "Enter test value: ";
+    std::cin >> revealedTiles;
+    if (revealedTiles == 0) {
+        // game.getTimer()->resetTimer();
+        // game.getTimer()->startTimer();
+        std::cout << "Generate board" << std::endl;
+        // game.getBoard()->generateBoard(&game, xBoardPos, yBoardPos);
         return true;
     }
     return false;
@@ -29,7 +31,7 @@ void Mine::showTile() {
         if (!firstTileClicked()) {
             sprite.setTexture(hiddenTexture);
             shown = true;
-            game.gameLose(this);
+            // game.gameLose(this);
         }
     }
 }

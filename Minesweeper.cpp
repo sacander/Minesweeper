@@ -89,7 +89,6 @@ Timer *Minesweeper::getTimer() {
     return timer;
 }
 
-void Minesweeper::setBoard(Board* boardn){
-    delete board;
-    board = boardn;
+void Minesweeper::setGameActive(bool gameActiven){
+    gameActive = gameActiven;
 }

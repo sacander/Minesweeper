@@ -18,9 +18,10 @@ class Board {
         int boardY = 50;
         // int firstSafeX;
         // int firstSafeY;
-        bool calculatedBoard = false;
+        bool loading = false;
         int totalMines;
         int revealedTiles = 0;
+        void cleanTiles(int height, int width);
     public:
         Board(int width, int height, int mines, Minesweeper* game, int clickX, int clickY);
         void loadBoard(int ** board, int width, int height, Minesweeper * game);
@@ -28,7 +29,7 @@ class Board {
         int** getSaveBoard();
         void draw(RenderWindow *window);
         void onClickEvent(RenderWindow *window, Event event);
-        bool incrementRevealedTiles();
+        bool incrementRevealedTiles(int clickX, int clickY);
         // void swapTiles(int x, int y, Minesweeper * game);
         void revealMines(Tile* tile);
         std::vector<Tile *> getAdjacentTiles(int x, int y);

@@ -13,6 +13,11 @@ Number::~Number() {}
 // Extends behaviour of showTile()
 void Number::showTile() {
     if (!flag && !shown) {
+
+        //Save board offset
+        int **saveBoard = game.getBoard()->getSaveBoard();
+        if(saveBoard[yBoardPos][xBoardPos] < 100) saveBoard[yBoardPos][xBoardPos] += 100;
+
         // Keeps general behaviour
         Tile::showTile();
         // Shows neighbouring tiles if it has a value of 0.
@@ -25,7 +30,7 @@ void Number::showTile() {
             }
         }
         // Checks if game has been won
-        if (game.getBoard()->incrementRevealedTiles()) {
+        if (game.getBoard()->incrementRevealedTiles(xBoardPos, yBoardPos)) {
             game.gameWin();
         }
     }
