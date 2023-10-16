@@ -15,7 +15,7 @@ bool Mine::firstTileClicked() {
         game.getTimer()->resetTimer();
         game.getTimer()->startTimer();
         // std::cout << "Genderate board" << std::endl;
-        game.getBoard()->generateBoard(&game, xBoardPos, yBoardPos);
+        game.getBoard()->generateBoard(&game, xBoardPos, yBoardPos, nullptr);
         return true;
     }
     return false;
