@@ -63,7 +63,7 @@ class SaveButtonInput : public SaveButton {
     //reimplementing function with exact same code, except saveGame() is not called so test can run)
     void onLeftClick() {
         //if timer has begun, allow save
-        if (game.getTimer()->getStarted()) {
+        if (game.getBoard()->getRevealedTiles() != 0) {
            std::cout << "saving..." << std::endl;
            //saveGame();
         } else {
@@ -73,7 +73,7 @@ class SaveButtonInput : public SaveButton {
     //same for the right click function
     void onRightClick() {
         //if timer has begun, allow save
-        if (game.getTimer()->getStarted()) {
+        if (game.getBoard()->getRevealedTiles() != 0) {
            std::cout << "saving..." << std::endl;
            //saveGame();
         } else {
@@ -208,7 +208,7 @@ class SaveButtonTest {
             test1.onLeftClick();
             test1.onRightClick();
 
-            game.getTimer()->startTimer();
+            game.getBoard()->incrementRevealedTiles(0,0);
             std::cout << "Game started, should allow save:" << std::endl;
             test1.onLeftClick();
             test1.onRightClick();

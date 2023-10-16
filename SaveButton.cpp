@@ -11,7 +11,7 @@ SaveButton::~SaveButton() {}
 
 void SaveButton::onLeftClick() {
     //if timer has begun, allow save
-    if (game.getTimer()->getStarted()) {
+    if (game.getBoard()->getRevealedTiles() != 0) {
         std::cout << "saving..." << std::endl;
         saveGame();
     } else {
@@ -21,7 +21,7 @@ void SaveButton::onLeftClick() {
 
 void SaveButton::onRightClick() {
     //if timer has begun, allow save
-    if (game.getTimer()->getStarted()) {
+    if (game.getBoard()->getRevealedTiles() != 0) {
         std::cout << "saving..." << std::endl;
         saveGame();
     } else {
