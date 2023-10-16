@@ -30,7 +30,7 @@ void Tile::onRightClick() {
 // Behaviour for toggling the flag
 void Tile::toggleFlag() {
     // Flag cannot be toggled if tile is revealed or if no tiles are revealed
-    if (shown || firstTileClicked()) {
+    if (shown || Tile::firstTileClicked()) {
         return;
     }
     // Hide flag if already flagged
