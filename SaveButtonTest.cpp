@@ -68,11 +68,56 @@ class SaveButtonTest {
     public:
     void tests() {
         //testing array of zeroes
-        int **board1 = new int*[5]{0};
-        for (int i = 0; i < 5; i++) {
-            board1[i] = new int[5]{0};
+        int **board1 = new int*[6]{0};
+        for (int i = 0; i < 6; i++) {
+            board1[i] = new int[7]{0};
         }
-        testSaving(board1, 5, 6, 10);
+        std::cout << "Test 1: Array of zeroes" << std::endl;
+        testSaving(board1, 6, 7, 10);
+
+        //array with non-zero values
+        int **board2 = new int*[15];
+        for (int i = 0; i < 15; i++) {
+            board2[i] = new int[10];
+        }
+        int value = 1;
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 10; j++) {
+                board2[i][j] = value;
+                value++;
+            }
+        }
+        std::cout << "\nTest 2: Array of non-zeroes" << std::endl;
+        testSaving(board2, 15, 10, 300);
+
+        //smallest possible array 5x5 (with random values)
+        int **board3 = new int*[5];
+        for (int i = 0; i < 5; i++) {
+            board3[i] = new int[5];
+        }
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                board3[i][j] = value;
+                value = 1+rand()%100;
+            }
+        }
+        std::cout << "\nTest 3: 5x5 (smallest possible array) of random numbers" << std::endl;
+        testSaving(board3, 5, 5, 62);
+
+        //largest possible array 26x26
+        int **board4 = new int*[26];
+        for (int i = 0; i < 26; i++) {
+            board4[i] = new int[26];
+        }
+        for (int i = 0; i < 26; i++) {
+            for (int j = 0; j < 26; j++) {
+                board4[i][j] = value;
+                value = 1+rand()%100;
+            }
+        }
+        std::cout << "\nTest 4: 26x26 (largest possible array) of random numbers" << std::endl;
+        testSaving(board4, 26, 26, 452);
+
     }
     private:
         void testSaving(int ** board, int length, int width, int time) {
@@ -89,21 +134,21 @@ class SaveButtonTest {
 
             if (saveFile.is_open()){
                 std::getline(saveFile, dataLine, '\n');
-                if (time = stoi(dataLine)) {
+                if (time == stoi(dataLine)) {
                     std::cout << "Time saved successfully" << std::endl;
                 } else {
                     std::cout << "FAIL, time not saved successfully" << std::endl;
                 }
 
                 std::getline(saveFile, dataLine, ',');
-                if (length = stoi(dataLine)) {
+                if (length == stoi(dataLine)) {
                     std::cout << "Length saved successfully" << std::endl;
                 } else {
                     std::cout << "FAIL, length not saved successfully" << std::endl;
                 }
 
                 std::getline(saveFile, dataLine, '\n');
-                if (width = stoi(dataLine)) {
+                if (width == stoi(dataLine)) {
                     std::cout << "Width saved successfully" << std::endl;
                 } else {
                     std::cout << "FAIL, width not saved successfully" << std::endl;
