@@ -32,28 +32,26 @@ void SaveButton::saveGame() {
     int** boardArray = game.getBoard()->getSaveBoard();
     
     //getting size of array
-    int length = game.getBoard()->getSizeY();
-    int width = game.getBoard()->getSizeX();
+    int length = game.getBoard()->getSizeY() + 2;
+    //std::cout << length << std::endl;
+    int width = game.getBoard()->getSizeX() + 2;
+    //std::cout << width << std::endl;
 
-    std::cout << length << " " << width << std::endl;
+    //std::cout << length << " " << width << std::endl;
 
     saveFile << length << ",";
     saveFile << width << "\n";
 
-    for (int i = 1; i < length+1; i++){
-        for (int j = 1; j < width+1; j++)
+    for (int i = 0; i < length; i++){
+        for (int j = 0; j < width; j++)
         {
             saveFile << boardArray[i][j] << ",";
+            //std::cout << boardArray[i][j];
         }
         saveFile << "\n";
+        //std::cout << std::endl;
     }
 
     saveFile.close();
 
-    //needs to be saved:
-    //timer, length, width, position of tile 1, revealed t/f, mine t/f, number, flag t/f .........
-
-    //as functions are called, save all to file, then when read call all functions again to restore game state, also set timer 
-
-    //or use boost thing.. but is confusing 
 }

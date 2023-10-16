@@ -21,6 +21,7 @@ void LoadButton::loadGame() {
     std::string dataLine;
     std::ifstream saveFile("progress.csv");
 
+    //initialise values 
     int elapsedTime = 0;
     int length = 0;
     int width = 0;
@@ -34,7 +35,6 @@ void LoadButton::loadGame() {
         //get length and width
         std::getline(saveFile, dataLine, ',');
         length = stoi(dataLine);
-        //std::cout << length << std::endl;
 
         std::getline(saveFile, dataLine, '\n');
         width = stoi(dataLine);
@@ -53,17 +53,19 @@ void LoadButton::loadGame() {
             }
         }
 
-        for (int i = 0; i < length; i++){
-            for (int j = 0; j < width; j++) {
-                std::cout << boardArray[i][j] << " ";
-            }
-        std::cout << std::endl;
-        }
+        // for (int i = 0; i < length; i++){
+        //     for (int j = 0; j < width; j++) {
+        //         std::cout << boardArray[i][j] << " ";
+        //     }
+        // std::cout << std::endl;
+        // }
 
         //set game time to previous save's timer
         game.getTimer()->resetTimer();
         game.getTimer()->setInitialTime(time(0)-elapsedTime);
 
+        //call load board function
+        game.getBoard()->loadBoard(boardArray, width, length, &game);
     }
     saveFile.close();
 }

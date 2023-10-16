@@ -11,7 +11,6 @@ class LoadButton: public Entity {
     ~LoadButton();
     void onLeftClick();
     void onRightClick();
-    void loadGame();
+    void loadGame(); //called when button click, reads in info from save file
 };
-
 #endif
