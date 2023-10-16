@@ -22,8 +22,8 @@ void SaveButton::onLeftClick() {
 void SaveButton::onRightClick() {
     //if timer has begun, allow save
     if (game.getTimer()->getStarted()) {
-        saveGame();
         std::cout << "saving..." << std::endl;
+        saveGame();
     } else {
         std::cout << "Cannot save a game that has not commenced" << std::endl;
     }

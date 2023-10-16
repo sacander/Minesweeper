@@ -60,6 +60,26 @@ class SaveButtonInput : public SaveButton {
 
         saveFile.close();
     }
+    //reimplementing function with exact same code, except saveGame() is not called so test can run)
+    void onLeftClick() {
+        //if timer has begun, allow save
+        if (game.getTimer()->getStarted()) {
+           std::cout << "saving..." << std::endl;
+           //saveGame();
+        } else {
+            std::cout << "Cannot save a game that has not commenced" << std::endl;
+        }
+    }
+    //same for the right click function
+    void onRightClick() {
+        //if timer has begun, allow save
+        if (game.getTimer()->getStarted()) {
+           std::cout << "saving..." << std::endl;
+           //saveGame();
+        } else {
+            std::cout << "Cannot save a game that has not commenced" << std::endl;
+        }
+    }
     //constructor for test class 
     SaveButtonInput(Vector2f pos, Minesweeper &game) : SaveButton(pos, game) {}
 };  
@@ -67,6 +87,8 @@ class SaveButtonInput : public SaveButton {
 class SaveButtonTest {
     public:
     void tests() {
+        //testing if saving works:
+        {
         //testing array of zeroes
         int **board1 = new int*[6]{0};
         for (int i = 0; i < 6; i++) {
@@ -117,7 +139,9 @@ class SaveButtonTest {
         }
         std::cout << "\nTest 4: 26x26 (largest possible array) of random numbers" << std::endl;
         testSaving(board4, 26, 26, 452);
-
+        }
+        //testing if saving is allowed / not allowed correctly
+        testAllowSave();
     }
     private:
         void testSaving(int ** board, int length, int width, int time) {
@@ -174,6 +198,20 @@ class SaveButtonTest {
             }
 
 
+        }
+        void testAllowSave() {
+            Minesweeper game (100, "SaveButton Test");
+
+            //game not started
+            SaveButtonInput test1(sf::Vector2f(0,0), game);
+            std::cout << "\nGame not started, should not allow save:" << std::endl;
+            test1.onLeftClick();
+            test1.onRightClick();
+
+            game.getTimer()->startTimer();
+            std::cout << "Game started, should allow save:" << std::endl;
+            test1.onLeftClick();
+            test1.onRightClick();
         }
 };
 
