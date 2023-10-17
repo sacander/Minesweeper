@@ -90,12 +90,12 @@ class SaveButtonTest {
         //testing if saving works:
         {
         //testing array of zeroes
-        int **board1 = new int*[6]{0};
-        for (int i = 0; i < 6; i++) {
+        int **board1 = new int*[8]{0};
+        for (int i = 0; i < 8; i++) {
             board1[i] = new int[7]{0};
         }
         std::cout << "Test 1: Array of zeroes" << std::endl;
-        testSaving(board1, 6, 7, 10);
+        testSaving(board1, 8, 7, 10);
 
         //array with non-zero values
         int **board2 = new int*[15];
@@ -112,33 +112,33 @@ class SaveButtonTest {
         std::cout << "\nTest 2: Array of non-zeroes" << std::endl;
         testSaving(board2, 15, 10, 300);
 
-        //smallest possible array 5x5 (with random values)
-        int **board3 = new int*[5];
-        for (int i = 0; i < 5; i++) {
-            board3[i] = new int[5];
+        //smallest possible array 7x7 (with random values)
+        int **board3 = new int*[7];
+        for (int i = 0; i < 7; i++) {
+            board3[i] = new int[7];
         }
         for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 7; j++) {
                 board3[i][j] = value;
                 value = 1+rand()%100;
             }
         }
-        std::cout << "\nTest 3: 5x5 (smallest possible array) of random numbers" << std::endl;
-        testSaving(board3, 5, 5, 62);
+        std::cout << "\nTest 3: 7x7 (smallest possible array) of random numbers (as saved and loaded board have extra 2 tiles of padding)" << std::endl;
+        testSaving(board3, 7, 7, 62);
 
-        //largest possible array 26x26
-        int **board4 = new int*[26];
-        for (int i = 0; i < 26; i++) {
-            board4[i] = new int[26];
+        //largest possible array 28x28 (with random values)
+        int **board4 = new int*[28];
+        for (int i = 0; i < 28; i++) {
+            board4[i] = new int[28];
         }
-        for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < 26; j++) {
+        for (int i = 0; i < 28; i++) {
+            for (int j = 0; j < 28; j++) {
                 board4[i][j] = value;
                 value = 1+rand()%100;
             }
         }
-        std::cout << "\nTest 4: 26x26 (largest possible array) of random numbers" << std::endl;
-        testSaving(board4, 26, 26, 452);
+        std::cout << "\nTest 4: 28x28 (largest possible array) of random numbers (as saved and loaded board have extra 2 tiles of padding)" << std::endl;
+        testSaving(board4, 28, 28, 452);
         }
         //testing if saving is allowed / not allowed correctly
         testAllowSave();
@@ -149,8 +149,6 @@ class SaveButtonTest {
             SaveButtonInput test1(sf::Vector2f(0,0), game);
 
             test1.saveGame(board, length, width, time);
-
-
 
             //reading in data from save file
             std::string dataLine;

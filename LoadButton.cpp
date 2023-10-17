@@ -53,12 +53,12 @@ void LoadButton::loadGame() {
             }
         }
 
-        for (int i = 0; i < length; i++){
-            for (int j = 0; j < width; j++) {
-                std::cout << boardArray[i][j] << " ";
-            }
-        std::cout << std::endl;
-        }
+        // for (int i = 0; i < length; i++){
+        //     for (int j = 0; j < width; j++) {
+        //         std::cout << boardArray[i][j] << " ";
+        //     }
+        // std::cout << std::endl;
+        // }
 
         //set game time to previous save's timer
         // game.getTimer()->resetTimer();

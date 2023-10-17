@@ -103,6 +103,14 @@ SaveButtonTest: SaveButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o
 	g++ SaveButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out
 	./test.out
 
+LoadButtonTestMac: LoadButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
+	g++ LoadButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out -Wl,-rpath,/usr/local/lib
+	./test.out
+
+LoadButtonTest: LoadButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o
+	g++ LoadButtonTest.cpp Minesweeper.o Entity.o Tile.o Mine.o Number.o Board.o Timer.o NewGameButton.o SaveButton.o LoadButton.o -lsfml-graphics -lsfml-window -lsfml-system -Wall -std=c++17 -o test.out
+	./test.out
+
 clean:
 	rm -f *.out
 	rm -f *.o
