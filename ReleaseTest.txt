@@ -1,0 +1,13 @@
+Blackbox Release Testing Checklist
+- Cannot flag until first tile clicked
+- Cannot save game until first tile clicked
+- Game ends upon revealing all non-mines or clicking a mine
+- Cannot interact with completed game
+- Cannot save completed game
+- Starting new game pauses timer
+- New game resets timer
+- All new game values are restricted to stated range
+- Load game/save game retains all board values
+- Load game/save game retains all revealed tiles
+- Load game/save game retains all flags
+- Load game/save game retains correc timer value
