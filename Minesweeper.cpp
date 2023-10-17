@@ -92,3 +92,7 @@ Timer *Minesweeper::getTimer() {
 void Minesweeper::setGameActive(bool gameActiven){
     gameActive = gameActiven;
 }
+
+bool Minesweeper::getGameActive() {
+    return gameActive;
+}

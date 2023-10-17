@@ -27,6 +27,7 @@ class Minesweeper {
         Board *getBoard();
         Timer *getTimer();
         Board *newBoard(int height, int width, int mines);
+        bool getGameActive();
 };
 
 #endif

@@ -11,21 +11,25 @@ SaveButton::~SaveButton() {}
 
 void SaveButton::onLeftClick() {
     //if timer has begun, allow save
-    if (game.getBoard()->getRevealedTiles() != 0) {
+    if (game.getBoard()->getRevealedTiles() != 0 && game.getGameActive() == true ) {
         std::cout << "saving..." << std::endl;
         saveGame();
-    } else {
+    } else if (game.getGameActive()) {
         std::cout << "Cannot save a game that has not commenced" << std::endl;
+    } else {
+        std::cout << "Cannot save a completed game" << std::endl;
     }
 }
 
 void SaveButton::onRightClick() {
     //if timer has begun, allow save
-    if (game.getBoard()->getRevealedTiles() != 0) {
+    if (game.getBoard()->getRevealedTiles() != 0 && game.getGameActive() == true ) {
         std::cout << "saving..." << std::endl;
         saveGame();
-    } else {
+    } else if (game.getGameActive()) {
         std::cout << "Cannot save a game that has not commenced" << std::endl;
+    } else {
+        std::cout << "Cannot save a completed game" << std::endl;
     }
 }
 
