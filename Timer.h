@@ -13,19 +13,18 @@ class Timer: public Entity {
     bool started = false; //reflects whether the timer and game has started 
     sf::Font textFont; // font 
     public:
-        void startTimer();
-        void stopTimer();
-        void resetTimer();
-        void onLeftClick();
-        void onRightClick();
-        void draw(sf::RenderWindow *window);
+        void startTimer(); //starts timer, sets started to true
+        void stopTimer(); //stops timer, sets started to false
+        void resetTimer(); //resets timer, sets display to "000" and resets initialTime to now
+        void onLeftClick(); // called on left click, does nothing
+        void onRightClick(); // called on right click, does nothing
+        void draw(sf::RenderWindow *window); //draws and updates the value displayed on the timer
         Timer(Vector2f pos, Minesweeper &game);
         ~Timer();
-        std::time_t getGameTime();
-        //getters and setters for testing purposes 
-        bool getStarted(); 
-        void setInitialTime(std::time_t _initialTime);
-        //sf::Text getDisplay(); 
+        std::time_t getGameTime(); //returns game time
+        bool getStarted(); //returns started
+        void setInitialTime(std::time_t _initialTime); //sets the initial time
+
 };
 
 #endif
