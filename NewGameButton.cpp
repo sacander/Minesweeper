@@ -93,7 +93,7 @@ void NewGameButton::newGame() {
   game.newBoard(length, width, numberMines);
 
   // for testing
-  std::cout << length << " " << width << " " << numberMines << std::endl;
+  //std::cout << length << " " << width << " " << numberMines << std::endl;
 }
 
 NewGameButton::~NewGameButton() {
