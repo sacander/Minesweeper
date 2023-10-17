@@ -19,7 +19,7 @@ void SaveButton::onLeftClick() {
     // if tiles have been revealed and the game is active allow save
     if (game.getBoard()->getRevealedTiles() != 0 &&
         game.getGameActive() == true) {
-        std::cout << "saving..." << std::endl;
+        std::cout << "Saving..." << std::endl;
         saveGame();
     } else if (game.getGameActive()) {
         std::cout << "Cannot save a game that has not commenced" << std::endl;
@@ -34,7 +34,7 @@ void SaveButton::onRightClick() {
     // if tiles have been revealed and the game is active allow save
     if (game.getBoard()->getRevealedTiles() != 0 &&
         game.getGameActive() == true) {
-        std::cout << "saving..." << std::endl;
+        std::cout << "Saving..." << std::endl;
         saveGame();
     } else if (game.getGameActive()) {
         std::cout << "Cannot save a game that has not commenced" << std::endl;

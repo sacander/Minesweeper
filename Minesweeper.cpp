@@ -67,7 +67,7 @@ void Minesweeper::gameLose(Tile *mine) {
     if (gameActive) {
         // Make it so you cant reveal tiles
         gameActive = false;
-        std::cout << "end game" << std::endl;
+        std::cout << "You lose!" << std::endl;
         timer->stopTimer();
         board->revealMines(mine);
     }
