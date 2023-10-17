@@ -36,8 +36,8 @@ void Tile::toggleFlag() {
     // Hide flag if already flagged
 
     int **saveBoard = game.getBoard()->getSaveBoard();
-    
-    //If the game is loading we only want to show flags (not hide)
+
+    // If the game is loading we only want to show flags (not hide)
     if (flag && !(game.getBoard()->getLoading())) {
         sprite.setTexture(texture);
         // Removes flag from save board
@@ -47,7 +47,7 @@ void Tile::toggleFlag() {
         // Show flag if not already flagged
         sprite.setTexture(flagTexture);
         // Writes flag to save board only if not loading
-        if(!(game.getBoard()->getLoading())){
+        if (!(game.getBoard()->getLoading())) {
             saveBoard[yBoardPos][xBoardPos] = -1 * saveBoard[yBoardPos][xBoardPos];
         }
         flag = true;

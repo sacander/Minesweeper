@@ -1,9 +1,9 @@
 // Alternate debug configuration of Number for testing
 
-#include "Number.h"
 #include "Minesweeper.h"
-#include <vector>
+#include "Number.h"
 #include <iostream>
+#include <vector>
 
 // Constructor calls tile constructor and assigns the value
 Number::Number(sf::Vector2f pos, Minesweeper &game, int xBoardPos, int yBoardPos, int value)

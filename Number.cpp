@@ -1,7 +1,7 @@
 #include "Number.h"
 #include "Minesweeper.h"
-#include <vector>
 #include <iostream>
+#include <vector>
 
 // Constructor calls tile constructor and assigns the value
 Number::Number(sf::Vector2f pos, Minesweeper &game, int xBoardPos, int yBoardPos, int value)
@@ -14,15 +14,16 @@ Number::~Number() {}
 void Number::showTile() {
     if (!flag && !shown) {
 
-        //Save board offset
+        // Save board offset
         int **saveBoard = game.getBoard()->getSaveBoard();
-        if(saveBoard[yBoardPos][xBoardPos] < 100) saveBoard[yBoardPos][xBoardPos] += 100;
+        if (saveBoard[yBoardPos][xBoardPos] < 100)
+            saveBoard[yBoardPos][xBoardPos] += 100;
 
         // Keeps general behaviour
         Tile::showTile();
         // Shows neighbouring tiles if it has a value of 0.
         if (value == 0) {
-            std::vector<Tile*> adjacentTiles = game.getBoard()->getAdjacentTiles(xBoardPos, yBoardPos);
+            std::vector<Tile *> adjacentTiles = game.getBoard()->getAdjacentTiles(xBoardPos, yBoardPos);
             int length = adjacentTiles.size();
             // std::cout << length << " length" << std::endl;
             for (int i = 0; i < length; i++) {

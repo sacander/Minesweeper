@@ -1,10 +1,10 @@
-#include<unistd.h> 
 #include <iostream>
+#include <unistd.h>
 
 #include "Board.h"
 #include "Minesweeper.h"
 
-//Board Test Function
+// Board Test Function
 
 int main() {
     // Creates test game instance and window
@@ -21,7 +21,6 @@ int main() {
             }
 
             if (event.type == sf::Event::MouseButtonPressed) {
-
             }
         }
 
@@ -32,9 +31,8 @@ int main() {
     return 0;
 }
 
-class BoardTest{
+class BoardTest {
     private:
-
         Minesweeper *game;
 
         void testGrid();
@@ -42,43 +40,35 @@ class BoardTest{
         void testAdjTiles();
         void testGenerateBoard();
         void testIncrementRevealedTiles();
-    public:
-        void runTests(){
 
+    public:
+        void runTests() {
         }
         BoardTest(/* args */);
         ~BoardTest();
 };
 
-void BoardTest::testGrid(){
-
+void BoardTest::testGrid() {
 }
 
-void BoardTest::testRevealMines(){
-
+void BoardTest::testRevealMines() {
 }
 
-void BoardTest::testAdjTiles(){
-
+void BoardTest::testAdjTiles() {
 }
 
-void BoardTest::testGenerateBoard(){
-
+void BoardTest::testGenerateBoard() {
 }
 
-//Tests incrementRevealedTiles() method
-void BoardTest::testIncrementRevealedTiles(){
+// Tests incrementRevealedTiles() method
+void BoardTest::testIncrementRevealedTiles() {
 
-    //Generate a board 5x5, 2 mines
-    game->newBoard(5,5,2);
-    
-
+    // Generate a board 5x5, 2 mines
+    game->newBoard(5, 5, 2);
 }
 
-BoardTest::BoardTest(/* args */)
-{
+BoardTest::BoardTest(/* args */) {
 }
 
-BoardTest::~BoardTest()
-{
+BoardTest::~BoardTest() {
 }
